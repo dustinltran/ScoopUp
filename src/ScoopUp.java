@@ -172,6 +172,7 @@ public class ScoopUp{
 				temp.setHasVehicle(true);
 				System.out.println("Enter vehicle's year: ");
 				vehicle.setYear(in.nextInt());
+				in.nextLine();
 				System.out.println("Enter vehicle's make: ");
 				vehicle.setMake(in.nextLine());
 				System.out.println("Enter vehicle's model: ");
@@ -180,6 +181,7 @@ public class ScoopUp{
 				vehicle.setColor(in.nextLine());
 				System.out.println("Enter vehicle's year: ");
 				vehicle.setAvailableSeats(in.nextInt());
+				in.nextLine();
 				temp.setVehicles(vehicle);
 			} else if (answer.charAt(0) == 'n') {
 				temp.setHasVehicle(false);
