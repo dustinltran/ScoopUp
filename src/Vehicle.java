@@ -1,5 +1,5 @@
 
-public class Vehicle {
+public class Vehicle implements java.io.Serializable{
 	private int year;
 	private String make;
 	private String model;
