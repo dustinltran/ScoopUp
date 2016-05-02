@@ -291,13 +291,9 @@ public class ScoopUp{
 			}
 		}while(answer.charAt(0) != 'y' && answer.charAt(0) != 'n');
 		
-
-		
-		System.out.println("\n");
-		System.out.println("\n");
+		System.out.println("");
 		System.out.println("Congratulation! You are registered with ScoopUp.");
-		System.out.println("\n");
-		System.out.println("\n");
+		System.out.println("");
 		
 		MemberList.add(temp);
 		
@@ -328,7 +324,11 @@ public class ScoopUp{
 				break;
 			case 3: //payments();
 				break;
-			case 4: System.out.println("Saving Info...");
+			case 4: 
+				break;
+			case 5: 
+				break;
+			case 0: System.out.println("Saving Info...");
 				return;
 			default: System.out.println("Bad option");
 				break;
@@ -343,12 +343,14 @@ public class ScoopUp{
 		
 		//System.out.println("Logged in as " + member.getName);
 		System.out.println("***************MAIN MENU*******************");
-		System.out.println("*                                         *");
 		System.out.println("* Select an option:                       *");
 		System.out.println("*   1) View Profile                       *");
+		System.out.println("*   2) Be a Driver                        *");
 		System.out.println("*   2) Request a Ride                     *");
 		System.out.println("*   3) Payments                           *");
-		System.out.println("*   4) Logout                             *");
+		System.out.println("*   4) View Profile                       *");
+		System.out.println("*   5) Edit Profile                       *");
+		System.out.println("*   0) Logout                             *");
 		System.out.println("*                                         *");
 		System.out.println("*******************************************");
 
@@ -390,6 +392,126 @@ public class ScoopUp{
 //		return option;
 //	}
 //	
+	public void editProfile(){
+		int choice = -1;
+		editProfileMenu();
+		do{
+			choice = in.nextInt();
+		}while(choice <= 0 || choice > 3); //TODO: Error CHeck
+		
+		switch(choice){
+		case 1: 
+		}
+		
+	}
+	
+	public void editProfileMenu(){
+		System.out.println(" 1) Change Schedule ");
+		System.out.println(" 2) Add Vehicle");
+		System.out.println(" 3) Delete Vehicle ");;
+		
+	}
+	
+	private void editSchedule(){
+		
+		/*
+		 * MONDAY -- Pass info to memberLongTermSchedule
+		 */
+		do{
+			System.out.println("Will you be needing a ride on Mondays? (y/n)");
+			answer = in.nextLine();
+		
+			if (answer.equals("y")){
+				System.out.println("What time do you need to be in school? (__:__ <-- use 24 hours time)");
+				currentUser.memberLongSchedule.addArrivals(0, time);
+				System.out.println("What time do you need to be leave school? (__:__ <-- use 24 hours time)");
+				currentUser.memberLongSchedule.addDepartures(0, time);
+			} else if (answer.equals("n")) {
+				System.out.println("");
+			}else{
+				System.out.println("Invalid Input, Try again!");
+			}
+		}while(answer.charAt(0) != 'y' && answer.charAt(0) != 'n');
+		
+		
+		
+		/*
+		 * TUESDAY -- info to memberLongTermSchedule
+		 */
+		do {
+			System.out.println("Will you be needing a ride on Tuesdays? (y/n)");
+			answer = in.nextLine();
+			if (answer.equals("y")){
+				System.out.println("What time do you need to be in school? (__:__ <-- use 24 hours time)");
+				currentUser.memberLongSchedule.addArrivals(1, time);
+				System.out.println("What time do you need to be leave school? (__:__ <-- use 24 hours time)");
+				currentUser.memberLongSchedule.addDepartures(1, time);
+			} else if (answer.equals("n")) {
+				System.out.println("");
+			}else{
+				System.out.println("Invalid Input, Try again!");
+			}
+		}while(answer.charAt(0) != 'y' && answer.charAt(0) != 'n');
+		
+
+		/*
+		 * WEDNESDAY -- Pass info to memberLongTermSchedule
+		 */
+		do{
+			System.out.println("Will you be needing a ride on Wednesdays? (y/n)");
+			answer = in.nextLine();
+			if (answer.equals("y")){
+				System.out.println("What time do you need to be in school? (__:__ <-- use 24 hours time)");
+				currentUser.memberLongSchedule.addArrivals(2, time);
+				System.out.println("What time do you need to be leave school? (__:__ <-- use 24 hours time)");
+				currentUser.memberLongSchedule.addDepartures(2, time);
+			} else if (answer.equals("n")) {
+				System.out.println("");
+			}else{
+				System.out.println("Invalid Input, Try again!");
+			}
+		}while(answer.charAt(0) != 'y' && answer.charAt(0) != 'n');
+
+		/*
+		 * Pass info to memberLongTermSchedule
+		 */
+		
+		do{
+			System.out.println("Will you be needing a ride on Thursdays? (y/n)");
+			answer = in.nextLine();
+			
+			if (answer.equals("y")){
+				System.out.println("What time do you need to be in school? (__:__ <-- use 24 hours time)");
+				currentUser.memberLongSchedule.addArrivals(3, time);
+				System.out.println("What time do you need to be leave school? (__:__ <-- use 24 hours time)");
+				currentUser.memberLongSchedule.addDepartures(3, time);
+			} else if (answer.equals("n")) {
+				System.out.println("");
+			}else{
+				System.out.println("Invalid Input, Try again!");
+			}
+		}while(answer.charAt(0) != 'y' && answer.charAt(0) != 'n');
+
+		
+		/*
+		 * FRIDAY -- Pass info to memberLongTermSchedule
+		 */
+		do{
+			System.out.println("Will you be needing a ride on Fridays? (y/n)");
+			answer = in.nextLine();
+			
+			if (answer.equals("y")){
+				System.out.println("What time do you need to be in school? (__:__ <-- use 24 hours time)");
+				currentUser.memberLongSchedule.addArrivals(4, time);
+				System.out.println("What time do you need to be leave school? (__:__ <-- use 24 hours time)");
+				currentUser.memberLongSchedule.addDepartures(4, time);
+			} else if (answer.equals("n")) {
+				System.out.println("");
+			}else{
+				System.out.println("Invalid Input, Try again!");
+			}
+		}while(answer.charAt(0) != 'y' && answer.charAt(0) != 'n');
+	}
 //	/**
 //	 * PROFILE SYSTEM
 //	 */
