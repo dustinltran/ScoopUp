@@ -308,32 +308,30 @@ public class ScoopUp{
 	 * MAIN SYSTEM
 	 */
 	public void systemMain(){
-		menuScreen();
 		int choice = -1;
 		
 		//LACKS ERROR CHECKING
 		do{
+			menuScreen();
 			choice = in.nextInt();
 
-		}while(choice < 0 || choice > 4);
-		
-		switch(choice){
-			case 1: //viewProfileScreen();
-				break;
-			case 2: //requestionRides();
-				break;
-			case 3: //payments();
-				break;
-			case 4: 
-				break;
-			case 5: 
-				break;
-			case 0: System.out.println("Saving Info...");
-				return;
-			default: System.out.println("Bad option");
-				break;
-		}
-	
+			switch(choice){
+				case 1: //viewProfileScreen();
+					break;
+				case 2: //requestionRides();
+					break;
+				case 3: //payments();
+					break;
+				case 4: 
+					break;
+				case 5: 
+					break;
+				case 0: System.out.println("Saving Info...");
+					return;
+				default: System.out.println("Bad option");
+					break;
+			}
+		}while(choice != 0);
 	}
 	
 	/**
@@ -400,18 +398,31 @@ public class ScoopUp{
 		}while(choice <= 0 || choice > 3); //TODO: Error CHeck
 		
 		switch(choice){
-		case 1: 
+			case 1: editSchedule();
+				break;
+			case 2: addVehicle();
+				break;
+			default:
+				System.out.println("Invalid Option!");
+				break;
 		}
-		
+		return;
 	}
 	
-	public void editProfileMenu(){
+	/**
+	 * Profile Menu
+	 */
+	private void editProfileMenu(){
 		System.out.println(" 1) Change Schedule ");
 		System.out.println(" 2) Add Vehicle");
-		System.out.println(" 3) Delete Vehicle ");;
+		//System.out.println(" 3) Delete Vehicle ");;
 		
 	}
 	
+	/**
+	 * Change User Schedule
+	 * NOTE: Redundant Code
+	 */
 	private void editSchedule(){
 		
 		/*
@@ -509,6 +520,38 @@ public class ScoopUp{
 				System.out.println("");
 			}else{
 				System.out.println("Invalid Input, Try again!");
+			}
+		}while(answer.charAt(0) != 'y' && answer.charAt(0) != 'n');
+	}
+	
+	private void addVehicle(){
+		System.out.println("Do you have a vehicle? (y/n)");
+
+		/*
+		 * Create a vehicle
+		 */
+		do{
+			answer = in.nextLine();
+			
+			if (answer.charAt(0) == 'y'){
+				currentUser.setHasVehicle(true);
+				System.out.println("Enter vehicle's year: ");
+				vehicle.setYear(in.nextInt());
+				System.out.println("Enter vehicle's make: ");
+				vehicle.setMake(in.nextLine());
+				System.out.println("Enter vehicle's model: ");
+				vehicle.setModel(in.nextLine());
+				System.out.println("Enter vehicle's color: ");
+				vehicle.setColor(in.nextLine());
+				System.out.println("Enter vehicle's year: ");
+				vehicle.setAvailableSeats(in.nextInt());
+				currentUser.setVehicles(vehicle);
+			} else if (answer.charAt(0) == 'n') {
+				currentUser.setHasVehicle(false);
+			} 
+			else {
+				//Error Message
+				System.out.println("invalid Input, Try Again!\n");
 			}
 		}while(answer.charAt(0) != 'y' && answer.charAt(0) != 'n');
 	}
