@@ -1,7 +1,4 @@
-/**
- * @author jakubkalinowski
- *
- */
+
 
 public class Passenger extends MemberStatus {
 

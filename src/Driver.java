@@ -1,13 +1,5 @@
-import java.util.Scanner;
 
-/**
- * 
- */
 
-/**
- * @author jakubkalinowski
- *
- */
 public class Driver extends MemberStatus {
 	
 	private MemberAbstraction member;
