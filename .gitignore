@@ -38,7 +38,4 @@ Thumbs.db
 
 *.class
 
-*.class
 /bin/
-
-members.ser

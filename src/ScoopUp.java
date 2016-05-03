@@ -338,6 +338,8 @@ public class ScoopUp{
 					break;
 				case 5: 
 					break;
+				case 6: editProfile();
+					break;
 				case 0: System.out.println("Saving Info...");
 					return;
 				default: System.out.println("Bad option");
@@ -356,10 +358,10 @@ public class ScoopUp{
 		System.out.println("* Select an option:                       *");
 		System.out.println("*   1) View Profile                       *");
 		System.out.println("*   2) Be a Driver                        *");
-		System.out.println("*   2) Request a Ride                     *");
-		System.out.println("*   3) Payments                           *");
-		System.out.println("*   4) View Profile                       *");
-		System.out.println("*   5) Edit Profile                       *");
+		System.out.println("*   3) Request a Ride                     *");
+		System.out.println("*   4) Payments                           *");
+		System.out.println("*   5) View Profile                       *");
+		System.out.println("*   6) Edit Profile                       *");
 		System.out.println("*   0) Logout                             *");
 		System.out.println("*                                         *");
 		System.out.println("*******************************************");
