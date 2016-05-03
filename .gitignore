@@ -45,4 +45,9 @@ Thumbs.db
 members.ser
 =======
 /bin/
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
+
+*.bak
 >>>>>>> origin/master

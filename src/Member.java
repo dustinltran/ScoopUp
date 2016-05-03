@@ -31,9 +31,7 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 
 
 	
-	
-	
-	private Boolean status;
+	private Boolean status; //set status of Member false if passenger true if driver
 	
 	float points;
 	int rides; //update as soon as new rides are done
@@ -45,6 +43,7 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	public Member(){
 		memberLongSchedule = new MemberLongTermSchedule();
 		memberShortSchedule = new MemberShortTermSchedule();
+		status = false;
 		points = 0;
 		rides = 0;
 	}
@@ -124,6 +123,19 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	public void setArrivals(int day, String time){
 		this.memberLongSchedule.addArrivals(day, time);
 	}
+	
+	public void setPassenger(){
+		status = false;
+	}
+	
+	public void setDriver(){
+		if(vehicles.size() > 0){
+			status = true;
+		}
+		else{
+			System.out.println("Cannot set to Driver!\nYou have no vehicles to drive!");
+		}
+	}
 	/***************************************
 	 **         SET VEHICLES              **
 	 **************************************/
@@ -175,6 +187,15 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	
 	public String getCoordinates(){
 		return homeCoordinates;
+	}
+	
+	public void getStatus(){
+		if(status == true){
+			System.out.println("You are a Driver");
+		}
+		else{
+			System.out.println("You are a Passenger");
+		}
 	}
 
 

@@ -328,17 +328,17 @@ public class ScoopUp{
 			choice = in.nextInt();
 
 			switch(choice){
-				case 1: //viewProfileScreen();
+				case 1: viewProfileScreen();
 					break;
-				case 2: //requestionRides();
+				case 2: toggleDriver();
 					break;
-				case 3: //payments();
+				case 3: togglePassenger();
 					break;
 				case 4: 
 					break;
 				case 5: 
 					break;
-				case 6: editProfile();
+				case 7: editProfile();
 					break;
 				case 0: System.out.println("Saving Info...");
 					return;
@@ -347,7 +347,21 @@ public class ScoopUp{
 			}
 		}while(choice != 0);
 	}
+	/**
+	 * Switch to Passenger
+	 */
+	private void togglePassenger(){
+		currentUser.setPassenger();
+		currentUser.getStatus();
+	}
 	
+	/**
+	 * Switch to Driver
+	 */
+	private void toggleDriver(){
+		currentUser.setDriver();
+		currentUser.getStatus();
+	}
 	/**
 	 * MAIN MENU SCREEN
 	 */
@@ -358,10 +372,11 @@ public class ScoopUp{
 		System.out.println("* Select an option:                       *");
 		System.out.println("*   1) View Profile                       *");
 		System.out.println("*   2) Be a Driver                        *");
-		System.out.println("*   3) Request a Ride                     *");
-		System.out.println("*   4) Payments                           *");
-		System.out.println("*   5) View Profile                       *");
-		System.out.println("*   6) Edit Profile                       *");
+		System.out.println("*   3) Be a Passenger                     *");
+		System.out.println("*   4) Request a Ride                     *");
+		System.out.println("*   5) Payments                           *");
+		System.out.println("*   6) View Profile                       *");
+		System.out.println("*   7) Edit Profile                       *");
 		System.out.println("*   0) Logout                             *");
 		System.out.println("*                                         *");
 		System.out.println("*******************************************");
@@ -372,38 +387,41 @@ public class ScoopUp{
 //	 * VIEW PROFILE SCREEN
 //	 * @return
 //	 */
-//	private int viewProfileScreen(){
-//		System.out.println("***PROFILE***\n\n");
-//		
-//		System.out.println("*"+m.getName()+"'s contact information*");
-//		System.out.println("Status: " + m.getMemberStatus());
+	private int viewProfileScreen(){
+		System.out.println("***PROFILE***\n\n");
+		
+		System.out.println("*"+currentUser.getName()+"'s contact information*");
+//		System.out.println("Status: " + currentUser.getMemberStatus());
 //		System.out.println("Preference (On Duty): " + m.isPreference());
-//		System.out.println("Emial: " + m.getEmail());
-//		System.out.println("Address: " + m.getAddress());
-//		
-//		System.out.println("*"+m.getName()+"'s vehicle information*");
-//		System.out.println("Vehicle: " + m.isHasVehicle());
-//		System.out.println("Vehicle: " + m.getVehicles());
-//		System.out.println("Seats Available: " + vehicle.getAvailableSeats());
-//		
-//		System.out.println("*"+m.getName()+"'s schedule*");
-//		System.out.println("TO SCHOOL:");
-//		
-//		//TO DO: iterate over arrivals hashmap
-//		
-//		System.out.println("FROM SCHOOL:");
-//		// TO DO: Iterate over departures hashmap
-//		
-//		System.out.println("OPTIONS");
-//		System.out.println("Press 1 to change status");
-//		System.out.println("Press 2 to change preference");
-//		System.out.println("Press 3 to edit seats available");
-//		System.out.println("Press 4 to edit schedule");
-//		System.out.println("Press 5 to go back to MAIN MENU");
-//		option = in.nextInt();
-//		return option;
-//	}
-//	
+		System.out.println("Emial: " + currentUser.getEmail());
+		System.out.println("Address: " + currentUser.getAddress());
+		
+		System.out.println("*"+currentUser.getName()+"'s vehicle information*");
+		System.out.println("Vehicle: " + currentUser.isHasVehicle());
+		System.out.println("Vehicle: " + currentUser.getVehicles());
+		System.out.println("Seats Available: " + vehicle.getAvailableSeats());
+		
+		System.out.println("*"+currentUser.getName()+"'s schedule*");
+		System.out.println("TO SCHOOL:");
+		
+		//TO DO: iterate over arrivals hashmap
+		
+		System.out.println("FROM SCHOOL:");
+		// TO DO: Iterate over departures hashmap
+		
+		System.out.println("OPTIONS");
+		System.out.println("Press 1 to change status");
+		System.out.println("Press 2 to change preference");
+		System.out.println("Press 3 to edit seats available");
+		System.out.println("Press 4 to edit schedule");
+		System.out.println("Press 5 to go back to MAIN MENU");
+		option = in.nextInt();
+		return option;
+	}
+
+	/*
+	 * Edit Profile
+	 */
 	public void editProfile(){
 		int choice = -1;
 		editProfileMenu();
