@@ -121,6 +121,9 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 		
 	}
 	
+	public void setArrivals(int day, String time){
+		this.memberLongSchedule.addArrivals(day, time);
+	}
 	/***************************************
 	 **         SET VEHICLES              **
 	 **************************************/
