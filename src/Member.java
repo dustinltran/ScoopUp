@@ -28,8 +28,8 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	private boolean preference;
 	private ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
 	private Vehicle vehicle;
-	private HashMap<Integer, Integer> arrivals;
-	private HashMap<Integer, Integer> departures;
+
+
 	
 	
 	
@@ -121,6 +121,9 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 		
 	}
 	
+	public void setArrivals(int day, String time){
+		this.memberLongSchedule.addArrivals(day, time);
+	}
 	/***************************************
 	 **         SET VEHICLES              **
 	 **************************************/
@@ -274,42 +277,6 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 		// TODO Auto-generated method stub
 		
 	}
-
-
-
-	/**
-	 * @return the arrivals
-	 */
-	public HashMap<Integer, Integer> getArrivals() {
-		return arrivals;
-	}
-
-
-
-	/**
-	 * @param arrivals the arrivals to set
-	 */
-	public void setArrivals(HashMap<Integer, Integer> arrivals) {
-		this.arrivals = arrivals;
-	}
-
-
-
-	/**
-	 * @return the departures
-	 */
-	public HashMap<Integer, Integer> getDepartures() {
-		return departures;
-	}
-
-
-
-	/**
-	 * @param departures the departures to set
-	 */
-	public void setDepartures(HashMap<Integer, Integer> departures) {
-		this.departures = departures;
-	}
 	
 	
 	@Override
@@ -318,5 +285,8 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 		
 		return 0;
 	}
+	
+	
+	
 
 }

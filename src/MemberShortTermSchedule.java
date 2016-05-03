@@ -2,11 +2,11 @@ import java.util.HashMap;
 
 public class MemberShortTermSchedule extends MemberSchedule{
 
-	private HashMap<Integer, Integer> shortTermArrivals;
-	private HashMap<Integer, Integer> shortTermDepartures;
+	private HashMap<Integer, String> shortTermArrivals;
+	private HashMap<Integer, String> shortTermDepartures;
 
 	private int day;
-	private int time;
+	private String time;
 	
 	
 	/**
@@ -14,18 +14,21 @@ public class MemberShortTermSchedule extends MemberSchedule{
 	 */
 	public MemberShortTermSchedule() {
 		super();
+
+		shortTermArrivals = new HashMap<Integer, String>();
+		shortTermDepartures = new HashMap<Integer, String>();
 	}
 
 	
 	@Override
-	public void addArrivals(int day, int time) {
+	public void addArrivals(int day, String time) {
 		
 		shortTermArrivals.put(day, time);
 		
 	}
 
 	@Override
-	public void addDepartures(int day, int time) {
+	public void addDepartures(int day, String time) {
 		
 		shortTermDepartures.put(day, time);
 		
@@ -34,14 +37,14 @@ public class MemberShortTermSchedule extends MemberSchedule{
 	/**
 	 * @return the shortTermDepartures
 	 */
-	public HashMap<Integer, Integer> getShortTermDepartures() {
+	public HashMap<Integer, String> getShortTermDepartures() {
 		return shortTermDepartures;
 	}
 
 	/**
 	 * @param shortTermDepartures the shortTermDepartures to set
 	 */
-	public void setShortTermDepartures(HashMap<Integer, Integer> shortTermDepartures) {
+	public void setShortTermDepartures(HashMap<Integer, String> shortTermDepartures) {
 		this.shortTermDepartures = shortTermDepartures;
 	}
 
@@ -49,7 +52,7 @@ public class MemberShortTermSchedule extends MemberSchedule{
 	/**
 	 * @return the shortTermArrivals
 	 */
-	public HashMap<Integer, Integer> getShortTermArrivals() {
+	public HashMap<Integer, String> getShortTermArrivals() {
 		return shortTermArrivals;
 	}
 
@@ -57,7 +60,7 @@ public class MemberShortTermSchedule extends MemberSchedule{
 	/**
 	 * @param shortTermArrivals the shortTermArrivals to set
 	 */
-	public void setShortTermArrivals(HashMap<Integer, Integer> shortTermArrivals) {
+	public void setShortTermArrivals(HashMap<Integer, String> shortTermArrivals) {
 		this.shortTermArrivals = shortTermArrivals;
 	}
 

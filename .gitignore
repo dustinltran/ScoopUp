@@ -38,7 +38,11 @@ Thumbs.db
 
 *.class
 
+<<<<<<< HEAD
 *.class
 /bin/
 
 members.ser
+=======
+/bin/
+>>>>>>> origin/master

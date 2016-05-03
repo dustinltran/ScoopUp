@@ -1,10 +1,11 @@
 
 public class Vehicle implements java.io.Serializable{
-	private int year;
+
+	private String year;
 	private String make;
 	private String model;
 	private String color;
-	private int availableSeats;
+	private String availableSeats;
 	
 	/**
 	 * EMPTY CONSTRUCTOR for testing
@@ -19,7 +20,7 @@ public class Vehicle implements java.io.Serializable{
 	 * @param color
 	 * @param availableSeats
 	 */
-	 public Vehicle(int year, String make, String model, String color, int availableSeats) {
+	 public Vehicle(String year, String make, String model, String color, String availableSeats) {
 		//super();
 		this.year = year;
 		this.make = make;
@@ -31,14 +32,14 @@ public class Vehicle implements java.io.Serializable{
 	/**
 	 * @return the year
 	 */
-	public int getYear() {
+	public String getYear() {
 		return year;
 	}
 	/**
-	 * @param year the year to set
+	 * @param string the year to set
 	 */
-	public void setYear(int year) {
-		this.year = year;
+	public void setYear(String string) {
+		this.year = string;
 	}
 	/**
 	 * @return the make
@@ -79,13 +80,13 @@ public class Vehicle implements java.io.Serializable{
 	/**
 	 * @return the availableSeats
 	 */
-	public int getAvailableSeats() {
+	public String getAvailableSeats() {
 		return availableSeats;
 	}
 	/**
 	 * @param availableSeats the availableSeats to set
 	 */
-	public void setAvailableSeats(int availableSeats) {
+	public void setAvailableSeats(String availableSeats) {
 		this.availableSeats = availableSeats;
 	}
 	
