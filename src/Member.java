@@ -264,7 +264,13 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	public void setVehicles(Vehicle vehicle) {
 		this.vehicle = vehicle;
 	}
-
+	/**
+	 * Add Vehicle into vehicle
+	 * @param vehicle
+	 */
+	public void addVehicle(Vehicle vehicle){
+		vehicles.add(vehicle);
+	}
 	/**
 	 * @return the preference
 	 */
