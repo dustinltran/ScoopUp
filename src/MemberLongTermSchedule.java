@@ -14,6 +14,8 @@ public class MemberLongTermSchedule extends MemberSchedule {
 	 */
 	public MemberLongTermSchedule() {
 		super();
+		longTermArrivals = new HashMap<Integer, String>();
+		longTermDepartures = new HashMap<Integer, String>();
 	}
 
 	

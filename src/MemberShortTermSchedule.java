@@ -14,6 +14,9 @@ public class MemberShortTermSchedule extends MemberSchedule{
 	 */
 	public MemberShortTermSchedule() {
 		super();
+
+		shortTermArrivals = new HashMap<Integer, String>();
+		shortTermDepartures = new HashMap<Integer, String>();
 	}
 
 	
