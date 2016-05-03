@@ -179,7 +179,7 @@ public class ScoopUp{
 				vehicle.setColor(in.nextLine());
 				System.out.println("Enter number of seats: ");
 				vehicle.setAvailableSeats(in.nextLine());
-				temp.addVehicle(vehicle);
+				temp.setVehicles(vehicle);
 			} else if (answer.charAt(0) == 'n') {
 				temp.setHasVehicle(false);
 			} 
@@ -577,7 +577,7 @@ public class ScoopUp{
 				myVehicle.setModel(in.nextLine());
 				System.out.println("Enter vehicle's color: ");
 				myVehicle.setColor(in.nextLine());
-				System.out.println("Enter vehicle's year: ");
+				System.out.println("Enter amount of seats: ");
 				myVehicle.setAvailableSeats(in.nextLine());
 				currentUser.addVehicle(myVehicle);
 			} else if (answer.charAt(0) == 'n') {
