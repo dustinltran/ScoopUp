@@ -391,7 +391,7 @@ public class ScoopUp{
 		System.out.println("***PROFILE***\n\n");
 		
 		System.out.println("*"+currentUser.getName()+"'s contact information*");
-//		System.out.println("Status: " + currentUser.getMemberStatus());
+//		System.out.println("Status: " + currentUser.getStatus());
 //		System.out.println("Preference (On Duty): " + m.isPreference());
 		System.out.println("Emial: " + currentUser.getEmail());
 		System.out.println("Address: " + currentUser.getAddress());
@@ -557,8 +557,10 @@ public class ScoopUp{
 	}
 	
 	private void addVehicle(){
+		Vehicle myVehicle = new Vehicle();
+		
 		System.out.println("Do you have a vehicle? (y/n)");
-
+		
 		/*
 		 * Create a vehicle
 		 */
@@ -566,20 +568,20 @@ public class ScoopUp{
 			answer = in.nextLine();
 			
 			if (answer.charAt(0) == 'y'){
-				currentUser.setHasVehicle(true);
+				
 				System.out.println("Enter vehicle's year: ");
-				vehicle.setYear(in.nextLine());
+				myVehicle.setYear(in.nextLine());
 				System.out.println("Enter vehicle's make: ");
-				vehicle.setMake(in.nextLine());
+				myVehicle.setMake(in.nextLine());
 				System.out.println("Enter vehicle's model: ");
-				vehicle.setModel(in.nextLine());
+				myVehicle.setModel(in.nextLine());
 				System.out.println("Enter vehicle's color: ");
-				vehicle.setColor(in.nextLine());
+				myVehicle.setColor(in.nextLine());
 				System.out.println("Enter vehicle's year: ");
-				vehicle.setAvailableSeats(in.nextLine());
-				currentUser.setVehicles(vehicle);
+				myVehicle.setAvailableSeats(in.nextLine());
+				currentUser.addVehicle(myVehicle);
 			} else if (answer.charAt(0) == 'n') {
-				currentUser.setHasVehicle(false);
+				
 			} 
 			else {
 				//Error Message
