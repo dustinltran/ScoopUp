@@ -202,12 +202,13 @@ public class ScoopUp{
 			answer = in.nextLine();
 		
 			if (answer.equals("y")){
-				System.out.println("What time do you need to be in school? (__:__ <-- use 24 hours time)");
+				System.out.println("What time do you need to be in school? (use 24 hours time)");
 				tempTime = in.nextLine();
 				temp.memberLongSchedule.addArrivals(0, tempTime);
-				System.out.println("What time do you need to be leave school? (__:__ <-- use 24 hours time)");
+				System.out.println("What time do you need to be leave school? (use 24 hours time)");
 				tempTime = in.nextLine();
-				temp.memberLongSchedule.addDepartures(0, tempTime);
+				//temp.memberLongSchedule.addDepartures(0, tempTime);
+				
 			} else if (answer.equals("n")) {
 				System.out.println("");
 			}else{
@@ -224,10 +225,10 @@ public class ScoopUp{
 			System.out.println("Will you be needing a ride on Tuesdays? (y/n)");
 			answer = in.nextLine();
 			if (answer.equals("y")){
-				System.out.println("What time do you need to be in school? (__:__ <-- use 24 hours time)");
+				System.out.println("What time do you need to be in school? (use 24 hours time)");
 				tempTime = in.nextLine();
 				temp.memberLongSchedule.addArrivals(1, tempTime);
-				System.out.println("What time do you need to be leave school? (__:__ <-- use 24 hours time)");
+				System.out.println("What time do you need to be leave school? (use 24 hours time)");
 				tempTime = in.nextLine();
 				temp.memberLongSchedule.addDepartures(1, tempTime);
 			} else if (answer.equals("n")) {
@@ -245,10 +246,10 @@ public class ScoopUp{
 			System.out.println("Will you be needing a ride on Wednesdays? (y/n)");
 			answer = in.nextLine();
 			if (answer.equals("y")){
-				System.out.println("What time do you need to be in school? (__:__ <-- use 24 hours time)");
+				System.out.println("What time do you need to be in school? (use 24 hours time)");
 				tempTime = in.nextLine();
 				temp.memberLongSchedule.addArrivals(2, tempTime);
-				System.out.println("What time do you need to be leave school? (__:__ <-- use 24 hours time)");
+				System.out.println("What time do you need to be leave school? (use 24 hours time)");
 				tempTime = in.nextLine();
 				temp.memberLongSchedule.addDepartures(2, tempTime);
 			} else if (answer.equals("n")) {
@@ -267,10 +268,10 @@ public class ScoopUp{
 			answer = in.nextLine();
 			
 			if (answer.equals("y")){
-				System.out.println("What time do you need to be in school? (__:__ <-- use 24 hours time)");
+				System.out.println("What time do you need to be in school? (use 24 hours time)");
 				tempTime = in.nextLine();
 				temp.memberLongSchedule.addArrivals(3, tempTime);
-				System.out.println("What time do you need to be leave school? (__:__ <-- use 24 hours time)");
+				System.out.println("What time do you need to be leave school? (use 24 hours time)");
 				tempTime = in.nextLine();
 				temp.memberLongSchedule.addDepartures(3, tempTime);
 			} else if (answer.equals("n")) {
@@ -289,10 +290,10 @@ public class ScoopUp{
 			answer = in.nextLine();
 			
 			if (answer.equals("y")){
-				System.out.println("What time do you need to be in school? (__:__ <-- use 24 hours time)");
+				System.out.println("What time do you need to be in school? (use 24 hours time)");
 				tempTime = in.nextLine();
 				temp.memberLongSchedule.addArrivals(4, tempTime);
-				System.out.println("What time do you need to be leave school? (__:__ <-- use 24 hours time)");
+				System.out.println("What time do you need to be leave school? (use 24 hours time)");
 				tempTime = in.nextLine();
 				temp.memberLongSchedule.addDepartures(4, tempTime);
 			} else if (answer.equals("n")) {
