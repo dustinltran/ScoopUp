@@ -330,15 +330,15 @@ public class ScoopUp{
 			switch(choice){
 				case 1: //viewProfileScreen();
 					break;
-				case 2: //requestionRides();
+				case 2: toggleDriver();
 					break;
-				case 3: //payments();
+				case 3: togglePassenger();
 					break;
 				case 4: 
 					break;
 				case 5: 
 					break;
-				case 6: editProfile();
+				case 7: editProfile();
 					break;
 				case 0: System.out.println("Saving Info...");
 					return;
@@ -347,7 +347,21 @@ public class ScoopUp{
 			}
 		}while(choice != 0);
 	}
+	/**
+	 * Switch to Passenger
+	 */
+	private void togglePassenger(){
+		currentUser.setPassenger();
+		currentUser.getStatus();
+	}
 	
+	/**
+	 * Switch to Driver
+	 */
+	private void toggleDriver(){
+		currentUser.setDriver();
+		currentUser.getStatus();
+	}
 	/**
 	 * MAIN MENU SCREEN
 	 */
@@ -358,10 +372,11 @@ public class ScoopUp{
 		System.out.println("* Select an option:                       *");
 		System.out.println("*   1) View Profile                       *");
 		System.out.println("*   2) Be a Driver                        *");
-		System.out.println("*   3) Request a Ride                     *");
-		System.out.println("*   4) Payments                           *");
-		System.out.println("*   5) View Profile                       *");
-		System.out.println("*   6) Edit Profile                       *");
+		System.out.println("*   3) Be a Passenger                     *");
+		System.out.println("*   4) Request a Ride                     *");
+		System.out.println("*   5) Payments                           *");
+		System.out.println("*   6) View Profile                       *");
+		System.out.println("*   7) Edit Profile                       *");
 		System.out.println("*   0) Logout                             *");
 		System.out.println("*                                         *");
 		System.out.println("*******************************************");
