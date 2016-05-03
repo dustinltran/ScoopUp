@@ -328,7 +328,7 @@ public class ScoopUp{
 			choice = in.nextInt();
 
 			switch(choice){
-				case 1: //viewProfileScreen();
+				case 1: viewProfileScreen();
 					break;
 				case 2: toggleDriver();
 					break;
