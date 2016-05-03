@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.security.MessageDigest;
-import java.time.DayOfWeek;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -171,14 +170,14 @@ public class ScoopUp{
 			if (answer.charAt(0) == 'y'){
 				temp.setHasVehicle(true);
 				System.out.println("Enter vehicle's year: ");
-				vehicle.setYear(in.nextInt());
+				vehicle.setYear(in.nextLine());
 				System.out.println("Enter vehicle's make: ");
 				vehicle.setMake(in.nextLine());
 				System.out.println("Enter vehicle's model: ");
 				vehicle.setModel(in.nextLine());
 				System.out.println("Enter vehicle's color: ");
 				vehicle.setColor(in.nextLine());
-				System.out.println("Enter vehicle's year: ");
+				System.out.println("Enter number of seats: ");
 				vehicle.setAvailableSeats(in.nextInt());
 				temp.setVehicles(vehicle);
 			} else if (answer.charAt(0) == 'n') {
@@ -536,7 +535,7 @@ public class ScoopUp{
 			if (answer.charAt(0) == 'y'){
 				currentUser.setHasVehicle(true);
 				System.out.println("Enter vehicle's year: ");
-				vehicle.setYear(in.nextInt());
+				vehicle.setYear(in.nextLine());
 				System.out.println("Enter vehicle's make: ");
 				vehicle.setMake(in.nextLine());
 				System.out.println("Enter vehicle's model: ");
