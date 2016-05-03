@@ -2,11 +2,11 @@ import java.util.HashMap;
 
 public class MemberLongTermSchedule extends MemberSchedule {
 
-	private HashMap<Integer, Integer> longTermArrivals;
-	private HashMap<Integer, Integer> longTermDepartures;
+	private HashMap<Integer, String> longTermArrivals;
+	private HashMap<Integer, String> longTermDepartures;
 
 	private int day;
-	private int time;
+	private String time;
 	
 	/**
 	 * @param day
@@ -18,13 +18,13 @@ public class MemberLongTermSchedule extends MemberSchedule {
 
 	
 	@Override
-	public void addArrivals(int day, int time) {
+	public void addArrivals(int day, String time) {
 		longTermArrivals.put(day, time);
 		
 	}
 
 	@Override
-	public void addDepartures(int day, int time) {
+	public void addDepartures(int day, String time) {
 		longTermDepartures.put(day, time);
 
 	}
