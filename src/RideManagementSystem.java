@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 public class RideManagementSystem {
-	ArrayList<ScheduleStrategy> RideSchedules;
+	private ArrayList<ScheduleStrategy> RideSchedules;
 	
-	ArrayList<Member> drivers;
-	ArrayList<Member> passengers;
+	private ArrayList<Member> drivers;
+	private ArrayList<Member> passengers;
 	
 	public RideManagementSystem(){
 		RideSchedules = new ArrayList<ScheduleStrategy>();
@@ -18,6 +18,8 @@ public class RideManagementSystem {
 		findDrivers(members);
 		findPassengers(members);
 	}
+	
+	//public 
 	
 	/**
 	 * Get drivers from members list

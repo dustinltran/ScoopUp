@@ -34,8 +34,8 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	float points;
 	int rides; //update as soon as new rides are done
 	
-	MemberSchedule memberLongSchedule;
-	MemberSchedule memberShortSchedule;
+	private MemberSchedule memberLongSchedule;
+	private MemberSchedule memberShortSchedule;
 	
 	
 	public Member(){
