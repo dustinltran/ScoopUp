@@ -182,17 +182,26 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 		return address;
 	}
 	
-	
+	/**
+	 * Get home coordinates of user
+	 * @return
+	 */
 	public String getCoordinates(){
 		return homeCoordinates;
 	}
 	
-	public void getStatus(){
+	/**
+	 * Gets status of User
+	 * @return status True is Driver, False is Passenger
+	 */
+	public boolean getStatus(){
 		if(status == true){
 			System.out.println("You are a Driver");
+			return status;
 		}
 		else{
 			System.out.println("You are a Passenger");
+			return status;
 		}
 	}
 

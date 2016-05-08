@@ -1,3 +1,3 @@
-public class ShortTermSchedule {
+public class ShortTermSchedule extends ScheduleStrategy{
 	
 }
