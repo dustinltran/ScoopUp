@@ -1,5 +1,5 @@
 
-public abstract class RideSchedule {
+public class RideSchedule {
 
 	
 }
