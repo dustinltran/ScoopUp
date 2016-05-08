@@ -34,10 +34,14 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	float points;
 	int rides; //update as soon as new rides are done
 	
-	private MemberSchedule memberLongSchedule;
-	private MemberSchedule memberShortSchedule;
+	protected MemberSchedule memberLongSchedule;
+	protected MemberSchedule memberShortSchedule;
 	
+	private RideManagementSystem rideSchedule;
 	
+	/**
+	 * Constructor
+	 */
 	public Member(){
 		memberLongSchedule = new MemberLongTermSchedule();
 		memberShortSchedule = new MemberShortTermSchedule();
@@ -45,11 +49,12 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 		points = 0;
 		rides = 0;
 	}
-/*****************************
- *****************************
- **   PUT MUTATORS HERE
- *****************************
- *****************************/
+	
+	/*****************************
+	 *****************************
+	 **   PUT MUTATORS HERE
+	 *****************************
+	 *****************************/
 	/*************************************
 	 **    SET PERSONAL INFORMATION     **
 	 *************************************/
@@ -145,11 +150,12 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 //		vehicles.add(newVehicle);
 //	}
 	
-/*****************************
- *****************************
- **   PUT ACCESSORS HERE
- *****************************
- *****************************/
+	/*****************************
+	 *****************************
+	 **   PUT ACCESSORS HERE
+	 *****************************
+	 *****************************/
+	
 	/*************************************
 	 **    GET PERSONAL INFORMATION     **
 	 *************************************/
@@ -295,7 +301,6 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	public void setPreference(boolean preference) {
 		this.preference = preference;
 	}
-
 
 
 	@Override
