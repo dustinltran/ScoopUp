@@ -6,6 +6,7 @@ public class Vehicle implements java.io.Serializable{
 	private String model;
 	private String color;
 	private String availableSeats;
+	private Integer seatsLeft;
 	
 	/**
 	 * EMPTY CONSTRUCTOR for testing
@@ -88,6 +89,16 @@ public class Vehicle implements java.io.Serializable{
 	 */
 	public void setAvailableSeats(String availableSeats) {
 		this.availableSeats = availableSeats;
+	}
+	
+	
+	public void addPassenger(){
+		if(seatsLeft > 0){
+			seatsLeft--;
+		}
+	}
+	public Integer getSeatsLeft(){
+		return seatsLeft;
 	}
 	
 }

@@ -30,6 +30,7 @@ public class FindLocation {
 	 */
 	public String findCoordinates(String location) throws IOException{
 		String webURL = "https://maps.googleapis.com/maps/api/geocode/json?address=";
+		webURL.concat(location);
 	    URL loc = new URL(webURL);
 	    URLConnection yc = loc.openConnection();
 	    BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream()));

@@ -36,22 +36,28 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	float points;
 	int rides; //update as soon as new rides are done
 	
-	MemberSchedule memberLongSchedule;
-	MemberSchedule memberShortSchedule;
+	protected MemberSchedule memberLongSchedule;
+	protected MemberSchedule memberShortSchedule;
 	
+	private RideManagementSystem rideSchedule;
 	
+	/**
+	 * Constructor
+	 */
 	public Member(){
 		memberLongSchedule = new MemberLongTermSchedule();
 		memberShortSchedule = new MemberShortTermSchedule();
+		
 		status = false;
 		points = 0;
 		rides = 0;
 	}
-/*****************************
- *****************************
- **   PUT MUTATORS HERE
- *****************************
- *****************************/
+	
+	/*****************************
+	 *****************************
+	 **   PUT MUTATORS HERE
+	 *****************************
+	 *****************************/
 	/*************************************
 	 **    SET PERSONAL INFORMATION     **
 	 *************************************/
@@ -84,9 +90,15 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 		StringTokenizer st = new StringTokenizer(address, ",");
 
 			this.address = st.nextElement().toString();
+			this.address = this.address.replace(" ", "+");
+			
 			this.city = st.nextElement().toString().substring(1);
+			this.city = this.city.replace(" ", "+");
+			
 			this.State = st.nextElement().toString().substring(1);
+			this.State = this.State.replace(" ", "+");
 			this.zipCode = st.nextElement().toString().substring(1);
+			this.zipCode = this.zipCode.replace(" ", "+");
 			
 			try {
 				setHome();
@@ -103,7 +115,7 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	 */
 	private void setHome() throws IOException{
 		FindLocation fl = new FindLocation();
-		
+		System.out.println(address + "+" + city + "+" + State);
 		homeCoordinates = fl.findCoordinates(address + "+" + city + "+" + State);
 	}
 	
@@ -147,11 +159,12 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 //		vehicles.add(newVehicle);
 //	}
 	
-/*****************************
- *****************************
- **   PUT ACCESSORS HERE
- *****************************
- *****************************/
+	/*****************************
+	 *****************************
+	 **   PUT ACCESSORS HERE
+	 *****************************
+	 *****************************/
+	
 	/*************************************
 	 **    GET PERSONAL INFORMATION     **
 	 *************************************/
@@ -184,25 +197,45 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 		return address;
 	}
 	
-	
+	/**
+	 * Get home coordinates of user
+	 * @return
+	 */
 	public String getCoordinates(){
 		return homeCoordinates;
 	}
 	
-	public void getStatus(){
+	/**
+	 * Gets status of User
+	 * @return status True is Driver, False is Passenger
+	 */
+	public boolean getStatus(){
 		if(status == true){
 			System.out.println("You are a Driver");
+			return status;
 		}
 		else{
 			System.out.println("You are a Passenger");
+			return status;
 		}
 	}
 
+	public String getArrivalTimes(Integer day){
+		return memberLongSchedule.getArrivals(day);
+	}
+	
+	public String getDepartureTimes(Integer day){
+		return memberLongSchedule.getDepartures(day);
+	}
 
 	/************************************
 	 **         GET VEHICLES           **
 	 ***********************************/
 
+	public int getNumSeats(){
+		return vehicle.getSeatsLeft();
+	}
+	
 
 	/**
 	 * 
@@ -266,7 +299,16 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	public void setVehicles(Vehicle vehicle) {
 		this.vehicle = vehicle;
 	}
-
+	/**
+	 * Add Vehicle into vehicle
+	 * @param vehicle
+	 */
+	public void addVehicle(Vehicle vehicle){
+		vehicles.add(vehicle);
+		if(vehicles.size() == 1){
+			setVehicles(vehicle);
+		}
+	}
 	/**
 	 * @return the preference
 	 */
@@ -282,7 +324,6 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	public void setPreference(boolean preference) {
 		this.preference = preference;
 	}
-
 
 
 	@Override

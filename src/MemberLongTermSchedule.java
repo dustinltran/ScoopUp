@@ -30,5 +30,14 @@ public class MemberLongTermSchedule extends MemberSchedule {
 		longTermDepartures.put(day, time);
 
 	}
+	
+	public String getArrivals(Integer day){
+		return longTermArrivals.get(day);
+	}
+	
+	public String getDepartures(Integer day){
+		return longTermArrivals.get(day);
+	}
+
 }
 
