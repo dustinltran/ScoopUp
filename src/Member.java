@@ -224,6 +224,10 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	 **         GET VEHICLES           **
 	 ***********************************/
 
+	public int getNumSeats(){
+		return vehicle.getSeatsLeft();
+	}
+	
 
 	/**
 	 * 
@@ -293,6 +297,9 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	 */
 	public void addVehicle(Vehicle vehicle){
 		vehicles.add(vehicle);
+		if(vehicles.size() == 1){
+			setVehicles(vehicle);
+		}
 	}
 	/**
 	 * @return the preference

@@ -31,11 +31,26 @@ public class RideManagementSystem {
 	 * Set Schedule
 	 */
 	public void setSchedule(){
-		
+		int currDriver;
+		int currTime = 99999999;
 		for(int i = 0; i < 5; i++){
 			timeSchedule[i] = setDaySchedule(timeSchedule[i], i);
 		}
+		
+		for(int i = 0; i < 5; i++){
+			for(int j = 0; j < passengers.size(); j++){
+				for(int k = 0; (k < drivers.size()) && (drivers.get(k).getNumSeats() > 0); k++){
+					if(Integer.parseInt(timeSchedule[i][k][j]) > currTime){
+						currDriver = k;
+					}
+				}
+				
+			}
+					
+		}
+		
 	}
+	
 	
 	/**
 	 * Set day of schedule
@@ -90,7 +105,6 @@ public class RideManagementSystem {
 	/**
 	 * Private Inner Class to save Distance and Time
 	 * 
-	 *
 	 */
 	private class MemberDistance{
 		private int distance;
