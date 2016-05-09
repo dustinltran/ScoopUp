@@ -406,12 +406,7 @@ public class ScoopUp{
 		System.out.println("TO SCHOOL:");
 		
 	
-		//TO DO: iterate over arrivals hashmap
-		for(int key : currentUser.memberLongSchedule.keySet()) {
-			int day = getKey();
-			String time = currentUser.memberLongSchedule.getValue().toString();
-			System.out.println(day + " - " + time);
-		}
+
 		
 		System.out.println("FROM SCHOOL:");
 		// TO DO: Iterate over departures hashmap

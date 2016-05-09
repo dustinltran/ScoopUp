@@ -88,9 +88,15 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 		StringTokenizer st = new StringTokenizer(address, ",");
 
 			this.address = st.nextElement().toString();
+			this.address = this.address.replace(" ", "+");
+			
 			this.city = st.nextElement().toString().substring(1);
+			this.city = this.city.replace(" ", "+");
+			
 			this.State = st.nextElement().toString().substring(1);
+			this.State = this.State.replace(" ", "+");
 			this.zipCode = st.nextElement().toString().substring(1);
+			this.zipCode = this.zipCode.replace(" ", "+");
 			
 			try {
 				setHome();
@@ -107,7 +113,7 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	 */
 	private void setHome() throws IOException{
 		FindLocation fl = new FindLocation();
-		
+		System.out.println(address + "+" + city + "+" + State);
 		homeCoordinates = fl.findCoordinates(address + "+" + city + "+" + State);
 	}
 	
