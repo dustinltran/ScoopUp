@@ -394,12 +394,11 @@ public class ScoopUp{
 		System.out.println("***PROFILE***\n\n");
 		
 		System.out.println("*"+currentUser.getName()+"'s contact information*");
-//		System.out.println("Status: " + currentUser.getStatus());
-//		System.out.println("Preference (On Duty): " + m.isPreference());
-		System.out.println("Emial: " + currentUser.getEmail());
+		System.out.println("Email: " + currentUser.getEmail());
 		System.out.println("Address: " + currentUser.getAddress());
 		
 		System.out.println("*"+currentUser.getName()+"'s vehicle information*");
+		System.out.println("Current Vehicle: " + currentUser.getV);
 		System.out.println("Vehicle: " + currentUser.isHasVehicle());
 		System.out.println("Vehicle: " + currentUser.getVehicles());
 		System.out.println("Seats Available: " + vehicle.getAvailableSeats());
