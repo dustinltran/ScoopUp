@@ -14,12 +14,16 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	private String name;
 	private String email;
 	private String password;
+	//List drivers 
 	
 	private String address;
 	private String city;
 	private String State;
 	private String zipCode; //Useless
 	private String homeCoordinates;
+	
+	private double X;
+	private double Y;
 	
 	private int distanceToSchool;
 	private int timeToSchool;
@@ -43,6 +47,7 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	 * Constructor
 	 */
 	public Member(){
+		
 		memberLongSchedule = new MemberLongTermSchedule();
 		memberShortSchedule = new MemberShortTermSchedule();
 		
@@ -81,6 +86,23 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 		this.password = password;
 	}
 	
+	
+	public double getX() {
+		return X;
+	}
+
+	public void setX(double x) {
+		X = x;
+	}
+
+	public double getY() {
+		return Y;
+	}
+
+	public void setY(double y) {
+		Y = y;
+	}
+
 	/**
 	 * @param address the address to set
 	 */
