@@ -159,6 +159,8 @@ public class ScoopUp{
 
 		System.out.println("Enter your full address (street, city, state, zip code): ");
 		temp.setAddress(in.nextLine());
+		temp.setX(FindLocation.getTempX());
+		temp.setY(FindLocation.getTempY());
 		
 		System.out.println("Do you have a vehicle? (y/n)");
 

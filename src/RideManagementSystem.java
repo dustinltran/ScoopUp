@@ -2,13 +2,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class RideManagementSystem {
-	private ArrayList<RideSchedule> RideSchedules;
 	
+	private ArrayList<RideSchedule> RideSchedules;
 	private ArrayList<Member> drivers;
 	private ArrayList<Member> passengers;
-	
 	private String timeSchedule[][][];
-	
+	String [][] mondaySchedule  = new String[100][100];
+	String [][] tuesdaySchedule  = new String[100][100];
+	String [][] wednesdaySchedule  = new String[100][100];
+	String [][] thursdaySchedule  = new String[100][100];
+	String [][] fridaySchedule  = new String[100][100];
 	/**
 	 * Constructor
 	 */
@@ -85,6 +88,7 @@ public class RideManagementSystem {
 	 */
 	private void findDrivers(ArrayList<Member> members){
 		for(Member m: members){
+			
 			if(m.getStatus() == true){
 				drivers.add(m);
 			}
