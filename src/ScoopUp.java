@@ -30,6 +30,7 @@ public class ScoopUp{
 		ScoopUp system = new ScoopUp();
 		system.MemberList = new ArrayList<Member>();
 		
+		
 		while(true){
 			system.loadInfo();
 			
@@ -404,7 +405,13 @@ public class ScoopUp{
 		System.out.println("*"+currentUser.getName()+"'s schedule*");
 		System.out.println("TO SCHOOL:");
 		
+	
 		//TO DO: iterate over arrivals hashmap
+		for(int key : currentUser.memberLongSchedule.keySet()) {
+			int day = getKey();
+			String time = currentUser.memberLongSchedule.getValue().toString();
+			System.out.println(day + " - " + time);
+		}
 		
 		System.out.println("FROM SCHOOL:");
 		// TO DO: Iterate over departures hashmap
@@ -413,7 +420,7 @@ public class ScoopUp{
 		System.out.println("Press 1 to change status");
 		System.out.println("Press 2 to change preference");
 		System.out.println("Press 3 to edit seats available");
-		System.out.println("Press 4 to edit schedule");
+//		System.out.println("Press 4 to edit schedule");
 		System.out.println("Press 5 to go back to MAIN MENU");
 		option = in.nextInt();
 		return option;
