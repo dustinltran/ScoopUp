@@ -159,8 +159,6 @@ public class ScoopUp{
 
 		System.out.println("Enter your full address (street, city, state, zip code): ");
 		temp.setAddress(in.nextLine());
-		temp.setX(FindLocation.getTempX());
-		temp.setY(FindLocation.getTempY());
 		
 		System.out.println("Do you have a vehicle? (y/n)");
 
@@ -341,6 +339,8 @@ public class ScoopUp{
 					break;
 				case 5: 
 					break;
+				case 6:	viewProfileScreen();
+					break;
 				case 7: editProfile();
 					break;
 				case 0: System.out.println("Saving Info...");
@@ -397,11 +397,11 @@ public class ScoopUp{
 		System.out.println("Email: " + currentUser.getEmail());
 		System.out.println("Address: " + currentUser.getAddress());
 		
-		System.out.println("*"+currentUser.getName()+"'s vehicle information*");
-		System.out.println("Current Vehicle: " + currentUser.getV);
-		System.out.println("Vehicle: " + currentUser.isHasVehicle());
-		System.out.println("Vehicle: " + currentUser.getVehicles());
-		System.out.println("Seats Available: " + vehicle.getAvailableSeats());
+		if(currentUser.getStatus() == true){
+			System.out.println("*"+currentUser.getName()+"'s vehicle information*");
+			System.out.println("Current Vehicle: " + currentUser.getVehicleInformation() );
+			System.out.println("Seats Available: " + currentUser.getNumSeats());
+		}
 		
 		System.out.println("*"+currentUser.getName()+"'s schedule*");
 		System.out.println("TO SCHOOL:");

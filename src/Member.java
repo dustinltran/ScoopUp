@@ -256,6 +256,9 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 		return vehicle.getSeatsLeft();
 	}
 	
+	public String getVehicleInformation(){
+		return vehicle.getYear() + " " + vehicle.getMake() + " " + vehicle.getModel();
+	}
 
 	/**
 	 * 
