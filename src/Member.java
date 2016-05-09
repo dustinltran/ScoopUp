@@ -34,22 +34,28 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	float points;
 	int rides; //update as soon as new rides are done
 	
-	MemberSchedule memberLongSchedule;
-	MemberSchedule memberShortSchedule;
+	protected MemberSchedule memberLongSchedule;
+	protected MemberSchedule memberShortSchedule;
 	
+	private RideManagementSystem rideSchedule;
 	
+	/**
+	 * Constructor
+	 */
 	public Member(){
 		memberLongSchedule = new MemberLongTermSchedule();
 		memberShortSchedule = new MemberShortTermSchedule();
+		
 		status = false;
 		points = 0;
 		rides = 0;
 	}
-/*****************************
- *****************************
- **   PUT MUTATORS HERE
- *****************************
- *****************************/
+	
+	/*****************************
+	 *****************************
+	 **   PUT MUTATORS HERE
+	 *****************************
+	 *****************************/
 	/*************************************
 	 **    SET PERSONAL INFORMATION     **
 	 *************************************/
@@ -145,11 +151,12 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 //		vehicles.add(newVehicle);
 //	}
 	
-/*****************************
- *****************************
- **   PUT ACCESSORS HERE
- *****************************
- *****************************/
+	/*****************************
+	 *****************************
+	 **   PUT ACCESSORS HERE
+	 *****************************
+	 *****************************/
+	
 	/*************************************
 	 **    GET PERSONAL INFORMATION     **
 	 *************************************/
@@ -182,25 +189,45 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 		return address;
 	}
 	
-	
+	/**
+	 * Get home coordinates of user
+	 * @return
+	 */
 	public String getCoordinates(){
 		return homeCoordinates;
 	}
 	
-	public void getStatus(){
+	/**
+	 * Gets status of User
+	 * @return status True is Driver, False is Passenger
+	 */
+	public boolean getStatus(){
 		if(status == true){
 			System.out.println("You are a Driver");
+			return status;
 		}
 		else{
 			System.out.println("You are a Passenger");
+			return status;
 		}
 	}
 
+	public String getArrivalTimes(Integer day){
+		return memberLongSchedule.getArrivals(day);
+	}
+	
+	public String getDepartureTimes(Integer day){
+		return memberLongSchedule.getDepartures(day);
+	}
 
 	/************************************
 	 **         GET VEHICLES           **
 	 ***********************************/
 
+	public int getNumSeats(){
+		return vehicle.getSeatsLeft();
+	}
+	
 
 	/**
 	 * 
@@ -270,6 +297,9 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	 */
 	public void addVehicle(Vehicle vehicle){
 		vehicles.add(vehicle);
+		if(vehicles.size() == 1){
+			setVehicles(vehicle);
+		}
 	}
 	/**
 	 * @return the preference
@@ -286,7 +316,6 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	public void setPreference(boolean preference) {
 		this.preference = preference;
 	}
-
 
 
 	@Override

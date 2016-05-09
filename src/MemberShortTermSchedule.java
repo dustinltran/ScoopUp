@@ -64,4 +64,18 @@ public class MemberShortTermSchedule extends MemberSchedule{
 		this.shortTermArrivals = shortTermArrivals;
 	}
 
+
+	@Override
+	public String getArrivals(Integer day) {
+		// TODO Auto-generated method stub
+		return shortTermArrivals.get(day);
+	}
+
+
+	@Override
+	public String getDepartures(Integer day) {
+		// TODO Auto-generated method stub
+		return shortTermArrivals.get(day);
+	}
+
 }
