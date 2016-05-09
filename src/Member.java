@@ -1,37 +1,61 @@
+/***
+ * For the Purpose of this project, "destination" will be set to SJSU
+ * Latitude: 37.3244939,
+ * Longitude: -121.8818703
+ */
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.StringTokenizer;
 
-public class Member extends MemberAbstraction {
+public class Member extends MemberAbstraction implements Comparable<Member>, java.io.Serializable {
 	
+	private final String schoolCoordinates = "37.3244939,-121.8818703";
 	private String name;
 	private String email;
 	private String password;
+	
 	private String address;
-	private Vehicle vehicle;
+	private String city;
+	private String State;
+	private String zipCode; //Useless
+	private String homeCoordinates;
+	
+	private int distanceToSchool;
+	private int timeToSchool;
+	
 	private boolean hasVehicle;
 	private boolean preference;
 	private ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
-	private HashMap<Integer, Integer> arrivals;
-	private HashMap<Integer, Integer> departures;
+	private Vehicle vehicle;
 	
+	private Boolean status; //set status of Member false if passenger true if driver
 	
-	MemberStatus memberStatus;
 	float points;
 	int rides; //update as soon as new rides are done
 	
-	MemberSchedule memberSchedule;
+	protected MemberSchedule memberLongSchedule;
+	protected MemberSchedule memberShortSchedule;
 	
+	private RideManagementSystem rideSchedule;
 	
+	/**
+	 * Constructor
+	 */
 	public Member(){
-		memberStatus = new Passenger(this);
+		memberLongSchedule = new MemberLongTermSchedule();
+		memberShortSchedule = new MemberShortTermSchedule();
+		
+		status = false;
 		points = 0;
 		rides = 0;
 	}
-/*****************************
- *****************************
- **   PUT MUTATORS HERE
- *****************************
- *****************************/
+	
+	/*****************************
+	 *****************************
+	 **   PUT MUTATORS HERE
+	 *****************************
+	 *****************************/
 	/*************************************
 	 **    SET PERSONAL INFORMATION     **
 	 *************************************/
@@ -61,9 +85,67 @@ public class Member extends MemberAbstraction {
 	 * @param address the address to set
 	 */
 	public void setAddress(String address) {
-		this.address = address;
+		StringTokenizer st = new StringTokenizer(address, ",");
+
+			this.address = st.nextElement().toString();
+			this.address = this.address.replace(" ", "+");
+			
+			this.city = st.nextElement().toString().substring(1);
+			this.city = this.city.replace(" ", "+");
+			
+			this.State = st.nextElement().toString().substring(1);
+			this.State = this.State.replace(" ", "+");
+			this.zipCode = st.nextElement().toString().substring(1);
+			this.zipCode = this.zipCode.replace(" ", "+");
+			
+			try {
+				setHome();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	
 	}
 	
+	/**
+	 * @throws IOException 
+	 * 
+	 */
+	private void setHome() throws IOException{
+		FindLocation fl = new FindLocation();
+		System.out.println(address + "+" + city + "+" + State);
+		homeCoordinates = fl.findCoordinates(address + "+" + city + "+" + State);
+	}
+	
+	/**
+	 * @throws IOException 
+	 * 
+	 */
+	public void setTimeandDistance() throws IOException{
+		FindLocation fl = new FindLocation();
+		
+		fl.findDistanceTime(getCoordinates(), schoolCoordinates);
+		distanceToSchool = fl.getDistance();
+		timeToSchool = fl.getTime();
+		
+	}
+	
+	public void setArrivals(int day, String time){
+		this.memberLongSchedule.addArrivals(day, time);
+	}
+	
+	public void setPassenger(){
+		status = false;
+	}
+	
+	public void setDriver(){
+		if(vehicles.size() > 0){
+			status = true;
+		}
+		else{
+			System.out.println("Cannot set to Driver!\nYou have no vehicles to drive!");
+		}
+	}
 	/***************************************
 	 **         SET VEHICLES              **
 	 **************************************/
@@ -75,11 +157,12 @@ public class Member extends MemberAbstraction {
 //		vehicles.add(newVehicle);
 //	}
 	
-/*****************************
- *****************************
- **   PUT ACCESSORS HERE
- *****************************
- *****************************/
+	/*****************************
+	 *****************************
+	 **   PUT ACCESSORS HERE
+	 *****************************
+	 *****************************/
+	
 	/*************************************
 	 **    GET PERSONAL INFORMATION     **
 	 *************************************/
@@ -98,9 +181,8 @@ public class Member extends MemberAbstraction {
 	}
 
 
-
 	/**
-	 * @return the password
+	 * @return the password?
 	 */
 	public String getPassword() {
 		return password;
@@ -112,31 +194,46 @@ public class Member extends MemberAbstraction {
 	public String getAddress() {
 		return address;
 	}
+	
+	/**
+	 * Get home coordinates of user
+	 * @return
+	 */
+	public String getCoordinates(){
+		return homeCoordinates;
+	}
+	
+	/**
+	 * Gets status of User
+	 * @return status True is Driver, False is Passenger
+	 */
+	public boolean getStatus(){
+		if(status == true){
+			System.out.println("You are a Driver");
+			return status;
+		}
+		else{
+			System.out.println("You are a Passenger");
+			return status;
+		}
+	}
+
+	public String getArrivalTimes(Integer day){
+		return memberLongSchedule.getArrivals(day);
+	}
+	
+	public String getDepartureTimes(Integer day){
+		return memberLongSchedule.getDepartures(day);
+	}
 
 	/************************************
 	 **         GET VEHICLES           **
 	 ***********************************/
 
-	
-	/************
-	 * WHat??
-	 */
-	public void setPassenger() {
-		
-		System.out.println(memberStatus.setPassenger());
+	public int getNumSeats(){
+		return vehicle.getSeatsLeft();
 	}
 	
-	public void setDriver() {
-		System.out.println(memberStatus.setDriver());
-	}
-	
-	public void setMemberStatus(MemberStatus ms) {
-		memberStatus = ms;
-	}
-	
-	public MemberStatus getMemberStatus() {
-		return memberStatus;
-	}
 
 	/**
 	 * 
@@ -200,7 +297,16 @@ public class Member extends MemberAbstraction {
 	public void setVehicles(Vehicle vehicle) {
 		this.vehicle = vehicle;
 	}
-
+	/**
+	 * Add Vehicle into vehicle
+	 * @param vehicle
+	 */
+	public void addVehicle(Vehicle vehicle){
+		vehicles.add(vehicle);
+		if(vehicles.size() == 1){
+			setVehicles(vehicle);
+		}
+	}
 	/**
 	 * @return the preference
 	 */
@@ -218,7 +324,6 @@ public class Member extends MemberAbstraction {
 	}
 
 
-
 	@Override
 	public void addArrivals(int day, int time) {
 		// TODO Auto-generated method stub
@@ -232,41 +337,13 @@ public class Member extends MemberAbstraction {
 		// TODO Auto-generated method stub
 		
 	}
-
-
-
-	/**
-	 * @return the arrivals
-	 */
-	public HashMap<Integer, Integer> getArrivals() {
-		return arrivals;
-	}
-
-
-
-	/**
-	 * @param arrivals the arrivals to set
-	 */
-	public void setArrivals(HashMap<Integer, Integer> arrivals) {
-		this.arrivals = arrivals;
-	}
-
-
-
-	/**
-	 * @return the departures
-	 */
-	public HashMap<Integer, Integer> getDepartures() {
-		return departures;
-	}
-
-
-
-	/**
-	 * @param departures the departures to set
-	 */
-	public void setDepartures(HashMap<Integer, Integer> departures) {
-		this.departures = departures;
+	
+	
+	@Override
+	public int compareTo(Member o) {
+		// TODO Auto-generated method stub
+		
+		return 0;
 	}
 
 }
