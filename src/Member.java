@@ -45,6 +45,7 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	public Member(){
 		memberLongSchedule = new MemberLongTermSchedule();
 		memberShortSchedule = new MemberShortTermSchedule();
+		
 		status = false;
 		points = 0;
 		rides = 0;
@@ -211,6 +212,13 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 		}
 	}
 
+	public String getArrivalTimes(Integer day){
+		return memberLongSchedule.getArrivals(day);
+	}
+	
+	public String getDepartureTimes(Integer day){
+		return memberLongSchedule.getDepartures(day);
+	}
 
 	/************************************
 	 **         GET VEHICLES           **
