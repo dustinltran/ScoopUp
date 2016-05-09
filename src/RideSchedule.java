@@ -4,18 +4,31 @@ public class RideSchedule {
 
 	private ScheduleStrategy schedule;
 	
-	private String email;
-	private ArrayList<Member> driver;
-	private ArrayList<Member> passenger;
+	private ArrayList<Member> passengers;
+	private Member driver;
 	
 	
 	/**
 	 * Constructor
 	 */
-	public RideSchedule(){}
+	public RideSchedule(Member driver){
+		passengers = new ArrayList<Member>();
+		setDriver(driver);
+	}
 	
-	public void setSchedule(){
+	private void setDriver(Member driver){
 		
 	}
+	
+	public void setSchedule(){
+		schedule = new LongTermSchedule();
+		
+		schedule.createSchedule(driver, passengers);
+	}
+
+	public void addPassengers(Member pass){
+		passengers.add(pass);
+	}
+	
 	
 }

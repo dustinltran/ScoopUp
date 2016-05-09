@@ -31,7 +31,7 @@ public class RideManagementSystem {
 	 * Set Schedule
 	 */
 	public void setSchedule(){
-		int currDriver;
+		int currDriver = -1;
 		int currTime = 99999999;
 		for(int i = 0; i < 5; i++){
 			timeSchedule[i] = setDaySchedule(timeSchedule[i], i);
@@ -44,7 +44,9 @@ public class RideManagementSystem {
 						currDriver = k;
 					}
 				}
-				
+				RideSchedule tempRider = new RideSchedule(drivers.get(currDriver));
+				tempRider.addPassengers(passengers.get(j));
+				currDriver = -1;
 			}
 					
 		}
