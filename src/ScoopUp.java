@@ -405,7 +405,6 @@ public class ScoopUp{
 		
 		System.out.println("*"+currentUser.getName()+"'s vehicle information*");
 		System.out.println("Vehicle: " + currentUser.vehicleID());
-		System.out.println("Vehicle: " + currentUser.getVehicles());
 		System.out.println("Seats Available: " + vehicle.getAvailableSeats());
 		
 		System.out.println("*"+currentUser.getName()+"'s schedule*");

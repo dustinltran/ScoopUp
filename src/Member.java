@@ -152,7 +152,8 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	public String vehicleID(){
 		return vehicle.getYear() + " "
 				+ vehicle.getMake() + " "
-				+ vehicle.getModel();
+				+ vehicle.getModel() + " "
+				+ vehicle.getColor();
 	}
 	
 	/*****************************
@@ -295,6 +296,7 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	 */
 	public void setVehicles(Vehicle vehicle) {
 		this.vehicle = vehicle;
+		this.vehicle.addPassenger();
 	}
 	/**
 	 * Add Vehicle into vehicle
