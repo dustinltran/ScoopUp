@@ -328,6 +328,11 @@ public class ScoopUp{
 			menuScreen();
 			choice = in.nextInt();
 
+			if (choice > 7 || choice < 0){
+				System.out.println("Invalid Input. Try again.");
+				systemMain();
+			}
+			
 			switch(choice){
 				case 1: viewProfileScreen();
 					break;
@@ -347,6 +352,7 @@ public class ScoopUp{
 					return;
 				default: System.out.println("Bad option");
 					break;
+					
 			}
 		}while(choice != 0);
 	}
@@ -408,7 +414,13 @@ public class ScoopUp{
 		
 	
 
-		
+		//TO DO: iterate over arrivals hashmap
+//		for(int key : currentUser.memberLongSchedule.keySet()) {
+//			int day = getKey();
+//			String time = currentUser.memberLongSchedule.getValue().toString();
+//			System.out.println(day + " - " + time);
+//		}
+
 		System.out.println("FROM SCHOOL:");
 		// TO DO: Iterate over departures hashmap
 		

@@ -1,5 +1,8 @@
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class RideManagementSystem {
 	
@@ -12,12 +15,32 @@ public class RideManagementSystem {
 	String [][] wednesdaySchedule  = new String[100][100];
 	String [][] thursdaySchedule  = new String[100][100];
 	String [][] fridaySchedule  = new String[100][100];
+	
+	
+	Calendar now = Calendar.getInstance();
+	int year = now.get(Calendar.YEAR);
+	int month = now.get(Calendar.MONTH) + 1; // Note: zero based!
+	int day = now.get(Calendar.DAY_OF_MONTH);
+	int hour = now.get(Calendar.HOUR_OF_DAY);
+	int minute = now.get(Calendar.MINUTE);
+	int second = now.get(Calendar.SECOND);
+	
+	
+	
+	
+	
+	
+	
+	//////////////////////// meaningless stuff below ///////////////////////////////////////
+	
+	ParkingGarage parking;
+	
 	/**
 	 * Constructor
 	 */
 	public RideManagementSystem(){
 		RideSchedules = new ArrayList<RideSchedule>();
-
+		parking = new ParkingGarage(20, 0);
 	}
 	
 	/**
@@ -33,26 +56,33 @@ public class RideManagementSystem {
 	/**
 	 * Set Schedule
 	 */
+//	public void setSchedule(){
+//		int currDriver = -1;
+//		int currTime = 99999999;
+//		for(int i = 0; i < 5; i++){
+//			timeSchedule[i] = setDaySchedule(timeSchedule[i], i);
+//		}
+//		
+//		for(int i = 0; i < 5; i++){
+//			for(int j = 0; j < passengers.size(); j++){
+//				for(int k = 0; (k < drivers.size()) && (drivers.get(k).getNumSeats() > 0); k++){
+//					if(Integer.parseInt(timeSchedule[i][k][j]) > currTime){
+//						currDriver = k;
+//					}
+//				}
+//				RideSchedule tempRider = new RideSchedule(drivers.get(currDriver));
+//				tempRider.addPassengers(passengers.get(j));
+//				currDriver = -1;
+//			}
+//					
+//		}
+//		
+//	}
+	
+	
 	public void setSchedule(){
-		int currDriver = -1;
-		int currTime = 99999999;
-		for(int i = 0; i < 5; i++){
-			timeSchedule[i] = setDaySchedule(timeSchedule[i], i);
-		}
 		
-		for(int i = 0; i < 5; i++){
-			for(int j = 0; j < passengers.size(); j++){
-				for(int k = 0; (k < drivers.size()) && (drivers.get(k).getNumSeats() > 0); k++){
-					if(Integer.parseInt(timeSchedule[i][k][j]) > currTime){
-						currDriver = k;
-					}
-				}
-				RideSchedule tempRider = new RideSchedule(drivers.get(currDriver));
-				tempRider.addPassengers(passengers.get(j));
-				currDriver = -1;
-			}
-					
-		}
+		
 		
 	}
 	
@@ -135,5 +165,10 @@ public class RideManagementSystem {
 			return time;
 		}
 	}
+	
+	/**
+	 * Parking assignment
+	 */
+	
 	
 }
