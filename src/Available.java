@@ -2,7 +2,6 @@
 public class Available extends ParkingState{
 
 	private ParkingGarageAbstraction parking;
-
 	
 	public Available(ParkingGarageAbstraction pga) {
 		parking = pga;
