@@ -175,7 +175,7 @@ public class ScoopUp{
 				vehicle.setColor(in.nextLine());
 				System.out.println("Enter number of seats: ");
 				vehicle.setAvailableSeats(in.nextLine());
-				//temp.setVehicles(vehicle);
+				temp.setVehicles(vehicle);
 				
 			} else if (answer.charAt(0) == 'n') {
 				temp.setHasVehicle(false);
@@ -328,12 +328,13 @@ public class ScoopUp{
 
 		do{
 			menuScreen();
-			choice = in.nextInt();
-
-			if (choice > 6 || choice < 0){
-				System.out.println("Invalid Input. Try again.");
+			try {
 				choice = in.nextInt();
-			}
+
+				if (choice > 6 || choice < 0){
+					System.out.println("Invalid Input. Try again.");
+					choice = in.nextInt();
+				}
 			
 			switch(choice){
 				case 1: viewProfileScreen();
@@ -353,6 +354,9 @@ public class ScoopUp{
 				default: System.out.println("Bad option");
 					break;
 					
+			}
+			}catch (Exception e){
+				
 			}
 		}while(choice != 0);
 	}
@@ -405,7 +409,6 @@ public class ScoopUp{
 		System.out.println("*  Address: " + currentUser.getAddress());
 		System.out.println("*");
 		System.out.println("** "+currentUser.getName()+"'s vehicle information");
-		try{
 		System.out.println("*  Vehicle: " + currentUser.vehicleID());
 		System.out.println("*  Seats Available: " + currentUser.vehicle.getAvailableSeats());
 		System.out.println("*");
@@ -421,16 +424,12 @@ public class ScoopUp{
 			if(currentUser.getDepartureTimes(i) != null) {
 				System.out.println("*\t" + daysOfWeek[i] + ": " + currentUser.getDepartureTimes(i));
 			}
-		}	
-		
-		}catch(Exception e){
-			
 		}
 		
 		System.out.println("*");
 		System.out.println("**  OPTIONS");
 		System.out.println("*  Press 0 to go back to MAIN MENU");
-		System.out.println("**********************************");
+		System.out.println("*************************************");
 		option = in.nextInt();
 		
 		while (option != 0){
