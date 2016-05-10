@@ -4,17 +4,37 @@ public class MemberShortTermSchedule extends MemberSchedule{
 
 	private HashMap<Integer, String> shortTermArrivals;
 	private HashMap<Integer, String> shortTermDepartures;
-
 	private int day;
 	private String time;
-	
 	
 	/**
 	 * @param shortTermSchedule
 	 */
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+//////////////bull crap below///////////////////////////////////////////////////////////////////
+	
 	public MemberShortTermSchedule() {
 		super();
-
 		shortTermArrivals = new HashMap<Integer, String>();
 		shortTermDepartures = new HashMap<Integer, String>();
 	}
