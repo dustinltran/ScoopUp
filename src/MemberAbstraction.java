@@ -1,12 +1,10 @@
-import java.time.DayOfWeek;
-import java.util.HashMap;
+
 
 public abstract class MemberAbstraction {
 	
 	/**
 	 * Abstract methods for MemberStatus (State Pattern)
 	 */
-	
 	/**
 	 * Abstract methods for Payments (Bridge Pattern)
 	 */

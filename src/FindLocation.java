@@ -15,6 +15,8 @@ public class FindLocation {
 	private String coordinates;
 	private int time;
 	private int distance;
+	public static double tempX;
+	public static double tempY;
 	
 	public FindLocation(){
 		time = 0;
@@ -30,7 +32,8 @@ public class FindLocation {
 	 */
 	public String findCoordinates(String location) throws IOException{
 		String webURL = "https://maps.googleapis.com/maps/api/geocode/json?address=";
-		webURL.concat(location);
+		//webURL.concat(location);
+		webURL += location ;
 	    URL loc = new URL(webURL);
 	    URLConnection yc = loc.openConnection();
 	    BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream()));
@@ -41,11 +44,15 @@ public class FindLocation {
 	        if(inputLine.contains("lat") || inputLine.contains("lng")){
 	        	if(inputLine.contains("lat")){
 	            	String latitude = inputLine.substring(23);
-	            	coordinates = latitude;
+	            	coordinates = latitude;//Y or -121.0
+	            	tempY = Double.parseDouble(latitude);
+	            	//System.out.println( "latitue is "+latitude);
 	        	}
 	        	else{
 	            	String longitude = inputLine.substring(23);
+	            	tempX = Double.parseDouble(longitude);
 	            	coordinates.concat(longitude);
+	            
 	        	}
 	        	count++;
 	        }
@@ -98,6 +105,21 @@ public class FindLocation {
 		return distance;
 	}
 	
+	public static double getTempX() {
+		return tempX;
+	}
+
+	public static void setTempX(double tempX) {
+		FindLocation.tempX = tempX;
+	}
+
+	public static double getTempY() {
+		return tempY;
+	}
+
+	public static void setTempY(double tempY) {
+		FindLocation.tempY = tempY;
+	}
 	
 	/**
 	 * Get Time to travel to desired destination
