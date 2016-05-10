@@ -394,6 +394,7 @@ public class ScoopUp{
 //	 * @return
 //	 */
 	private int viewProfileScreen(){
+		
 		System.out.println("*****************PROFILE*********************");
 		System.out.println("*");
 		System.out.println("** "+currentUser.getName()+"'s contact information");
@@ -404,7 +405,7 @@ public class ScoopUp{
 		System.out.println("*");
 		System.out.println("** "+currentUser.getName()+"'s vehicle information");
 		System.out.println("*  Vehicle: " + currentUser.vehicleID());
-		System.out.println("*  Seats Available: " + vehicle.getAvailableSeats());
+		System.out.println("*  Seats Available: " + currentUser.vehicle.getAvailableSeats());
 		System.out.println("*");
 		System.out.println("** "+currentUser.getName()+"'s schedule");
 		System.out.println("*  TO SCHOOL:");
@@ -622,6 +623,7 @@ public class ScoopUp{
 				vehicle.setColor(in.nextLine());
 				System.out.println("Enter number of seats: ");
 				vehicle.setAvailableSeats(in.nextLine());
+				System.out.println("");
 				currentUser.addVehicle(vehicle);
 				currentUser.setVehicles(vehicle);
 			} else if (answer.charAt(0) == 'n') {

@@ -28,7 +28,7 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	private boolean hasVehicle;
 	private boolean preference;
 	private ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
-	private Vehicle vehicle;
+	Vehicle vehicle;
 	
 	private Boolean status; //set status of Member false if passenger true if driver
 	
@@ -160,7 +160,7 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 				+ vehicle.getModel() + " "
 				+ vehicle.getColor();
 		}catch (Exception e){
-			e.printStackTrace();;
+			//e.printStackTrace();;
 		}
 		return null;
 	}

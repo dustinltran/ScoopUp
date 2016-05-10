@@ -82,14 +82,18 @@ public class Vehicle implements java.io.Serializable{
 	 * @param availableSeats the availableSeats to set
 	 */
 	public void setAvailableSeats(String availableSeats) {
+		//System.out.println("stting seeats");
 		this.availableSeats = availableSeats;
+		
 		this.seatsLeft = Integer.parseInt(availableSeats);
+		//System.out.println("available seats are"+ availableSeats);
 	}
 	
 	/**
 	 * @return the availableSeats
 	 */
 	public String getAvailableSeats() {
+		//System.out.println("gettting setas");
 		return availableSeats;
 	}
 	
