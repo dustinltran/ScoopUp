@@ -66,7 +66,7 @@ public class FindLocation {
 	 * @param destination longitude and latitude of destination
 	 * @throws IOException
 	 */
-	public void findDistanceTime(String origin, String destination) throws IOException{
+	public int findDistanceTime(String origin, String destination) throws IOException{
     	String webURL = "https://maps.googleapis.com/maps/api/distancematrix/json?";
     	String originRaw = "origin=" + origin;
     	String destRaw = "&destination=" + destination;
@@ -95,6 +95,7 @@ public class FindLocation {
         	}
         	
         }
+        return time;
 	}
 	
 	/**
