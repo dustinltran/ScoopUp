@@ -15,6 +15,7 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	private String email;
 	private String password;
 	
+	private String rawAddress;
 	private String address;
 	private String city;
 	private String State;
@@ -186,7 +187,7 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	 * @return the address
 	 */
 	public String getAddress() {
-		return address;
+		return rawAddress;
 	}
 	
 	/**
