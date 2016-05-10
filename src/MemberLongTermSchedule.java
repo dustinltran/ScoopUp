@@ -36,7 +36,7 @@ public class MemberLongTermSchedule extends MemberSchedule {
 	}
 	
 	public String getDepartures(Integer day){
-		return longTermArrivals.get(day);
+		return longTermDepartures.get(day);
 	}
 
 }

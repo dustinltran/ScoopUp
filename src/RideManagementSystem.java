@@ -10,16 +10,17 @@ public class RideManagementSystem {
 	private ArrayList<Member> drivers;
 	private ArrayList<Member> passengers;
 	private String timeSchedule[][][];
-	String [][] mondaySchedule  = new String[100][100];
-	String [][] tuesdaySchedule  = new String[100][100];
-	String [][] wednesdaySchedule  = new String[100][100];
-	String [][] thursdaySchedule  = new String[100][100];
-	String [][] fridaySchedule  = new String[100][100];
-	
+	String [][] mondaySchedule  = new String[10][10];
+	String [][] tuesdaySchedule  = new String[10][10];
+	String [][] wednesdaySchedule  = new String[10][10];
+	String [][] thursdaySchedule  = new String[10][10];
+	String [][] fridaySchedule  = new String[10][10];
+//	Member m = new Member();
+	FindLocation fl = new FindLocation();
 	
 	Calendar now = Calendar.getInstance();
 	int year = now.get(Calendar.YEAR);
-	int month = now.get(Calendar.MONTH) + 1; // Note: zero based!
+	int month = now.get(Calendar.MONTH) + 1; 
 	int day = now.get(Calendar.DAY_OF_MONTH);
 	int hour = now.get(Calendar.HOUR_OF_DAY);
 	int minute = now.get(Calendar.MINUTE);
@@ -55,34 +56,101 @@ public class RideManagementSystem {
 	}
 	/**
 	 * Set Schedule
+	 * @throws NumberFormatException 
+	 * @throws IOException 
 	 */
-//	public void setSchedule(){
-//		int currDriver = -1;
-//		int currTime = 99999999;
-//		for(int i = 0; i < 5; i++){
-//			timeSchedule[i] = setDaySchedule(timeSchedule[i], i);
+	public void setSchedule() throws NumberFormatException, IOException{
+		Integer members[] = new Integer[drivers.size()];
+		ArrayList<String> tempLocations = new ArrayList<String>();
+		int currDriver = -1;
+		int currTime = 99999999;
+		int tempTime = 0;
+		boolean timeSet = false;
+		
+
+		for(int i = 0; i < 5; i++){
+			timeSchedule[i] = setDaySchedule(timeSchedule[i], i);
+		}
+		
+		for(int a = 0; a < drivers.size(); a++){
+			tempLocations.add(drivers.get(a).getCoordinates());
+			RideSchedule tempRider = new RideSchedule(drivers.get(a));
+			RideSchedules.add(tempRider);
+		}
+		
+		for(int i = 0; i < 5; i++){
+			for(int j = 0; j < passengers.size(); j++){
+				for(int k = 0; (k < drivers.size()) && (drivers.get(k).getNumSeats() > 0); k++){
+					if(timeSchedule[i][j][k] != "" && Integer.parseInt(timeSchedule[i][k][j]) < currTime){
+						currDriver = k;
+						tempTime = Integer.parseInt(timeSchedule[i][j][k]);
+						timeSet = true;
+					}
+				}
+				if(timeSet == true){
+					tempLocations.set(currDriver, passengers.get(j).getAddress());
+					RideSchedules.get(currDriver).addPassengers(passengers.get(j), i);
+					timeSet = false;
+				}
+				currTime = 99999999;
+				currDriver = -1;
+			}
+					
+		}
+		
+	}
+	
+	
+	
+	public void setSchedule(Member member) throws IOException{
+		setMondaySchedule(member);
+		setTuesdaySchedule(member);
+		setWednesdaySchedule(member);
+		setThursdaySchedule(member);
+		setFridaySchedule(member);
+	}
+	
+	private void setFridaySchedule(Member member) throws IOException {
+		// TODO Auto-generated method stub
+		if(member.isHasVehicle()){//if member has a vehicle
+			
+			
+		}else{ // if the member is always is a passenger
+			for(int i = 0; i < drivers.size(); i++){
+				if(drivers.get(i).getArrivalTimes(4) == member.getArrivalTimes(4) ) {
+					// also check for location on map later
+					if( (fl.findDistanceTime(member.getAddress(), drivers.get(i).getAddress())/60   ) < 10 ){ 
+						// match found here. set up passenger and driver if driver has enough seats. 
+						
+					}
+				}
+			}
+			
+		}
+	}
+	
+//	public void fridayHelper(Member driver, Member pass){
+//		if (driver.getNumSeats()  > 0 ){
+//			driver.getVehicle().
 //		}
-//		
-//		for(int i = 0; i < 5; i++){
-//			for(int j = 0; j < passengers.size(); j++){
-//				for(int k = 0; (k < drivers.size()) && (drivers.get(k).getNumSeats() > 0); k++){
-//					if(Integer.parseInt(timeSchedule[i][k][j]) > currTime){
-//						currDriver = k;
-//					}
-//				}
-//				RideSchedule tempRider = new RideSchedule(drivers.get(currDriver));
-//				tempRider.addPassengers(passengers.get(j));
-//				currDriver = -1;
-//			}
-//					
-//		}
-//		
 //	}
-	
-	
-	public void setSchedule(){
+
+	private void setThursdaySchedule(Member member) {
+		// TODO Auto-generated method stub
 		
+	}
+
+	private void setWednesdaySchedule(Member member) {
+		// TODO Auto-generated method stub
 		
+	}
+
+	private void setTuesdaySchedule(Member member) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setMondaySchedule(Member member){
 		
 	}
 	
@@ -99,9 +167,13 @@ public class RideManagementSystem {
 		for(int i = 0; i < drivers.size(); i++){
 			for(int j = 0; j < passengers.size(); j++){
 				try {
-					if(drivers.get(i).getArrivalTimes(day) != null && passengers.get(i).getArrivalTimes(day) != null);
+					if(drivers.get(i).getArrivalTimes(day) != null && passengers.get(j).getArrivalTimes(day) != null){
 						fl.findDistanceTime(drivers.get(i).getCoordinates(), passengers.get(j).getCoordinates());
 						driverSchedule[i][j] = Integer.toString(fl.getTime());
+					}
+					else if (drivers.get(i).getArrivalTimes(day) == null || passengers.get(j).getArrivalTimes(day) == null){
+						driverSchedule[i][j] = "";
+					}
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

@@ -15,6 +15,7 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	private String email;
 	private String password;
 	
+	private String rawAddress;
 	private String address;
 	private String city;
 	private String State;
@@ -27,12 +28,20 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	private boolean hasVehicle;
 	private boolean preference;
 	private ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
-	private Vehicle vehicle;
+	Vehicle vehicle;
 	
-	private ArrayList<Notification> notifications= new ArrayList<Notification>();
+
+	public Vehicle getVehicle() {
+		return vehicle;
+	}
 
 
-	
+	public void setVehicle(Vehicle vehicle) {
+		this.vehicle = vehicle;
+	}
+
+
+
 	private Boolean status; //set status of Member false if passenger true if driver
 	
 	float points;
@@ -54,6 +63,7 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 		points = 0;
 		rides = 0;
 	}
+	
 	
 	/*****************************
 	 *****************************
@@ -89,12 +99,17 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	 * @param address the address to set
 	 */
 	public void setAddress(String address) {
+		rawAddress = address;
 		StringTokenizer st = new StringTokenizer(address, ",");
 
-			this.address = st.nextElement().toString();
-			this.city = st.nextElement().toString().substring(1);
-			this.State = st.nextElement().toString().substring(1);
-			this.zipCode = st.nextElement().toString().substring(1);
+		this.address = st.nextElement().toString();
+		this.address = this.address.replace(" ", "+");
+		this.city = st.nextElement().toString().substring(1);
+		this.city = this.city.replace(" ", "+");
+		this.State = st.nextElement().toString().substring(1);
+		this.State = this.State.replace(" ", "+");
+		this.zipCode = st.nextElement().toString().substring(1);
+		this.zipCode = this.zipCode.replace(" ", "+");
 			
 			try {
 				setHome();
@@ -156,9 +171,17 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	 * Add vehicle to array of vehicles
 	 * @param newVehicle vehicle to be added
 	 */
-//	public void setVehicles(Vehicle newVehicle){
-//		vehicles.add(newVehicle);
-//	}
+	public String vehicleID(){
+		try{
+		return vehicle.getYear() + " "
+				+ vehicle.getMake() + " "
+				+ vehicle.getModel() + " "
+				+ vehicle.getColor();
+		}catch (Exception e){
+			//e.printStackTrace();;
+		}
+		return null;
+	}
 	
 	/*****************************
 	 *****************************
@@ -195,7 +218,7 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	 * @return the address
 	 */
 	public String getAddress() {
-		return address;
+		return rawAddress;
 	}
 	
 	/**
@@ -300,6 +323,11 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	 */
 	public void setVehicles(Vehicle vehicle) {
 		this.vehicle = vehicle;
+		this.vehicle.addPassenger();
+	}
+	
+	public void addPassenger(){
+		this.vehicle.addPassenger();
 	}
 	/**
 	 * Add Vehicle into vehicle
@@ -311,6 +339,7 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 			setVehicles(vehicle);
 		}
 	}
+	
 	/**
 	 * @return the preference
 	 */

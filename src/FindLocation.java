@@ -44,6 +44,7 @@ public class FindLocation {
 	        if(inputLine.contains("lat") || inputLine.contains("lng")){
 	        	if(inputLine.contains("lat")){
 	            	String latitude = inputLine.substring(23);
+
 	            	String mod_lat = latitude.replace(": ", "");
 	            	mod_lat = mod_lat.replace(",","");
 	            	//coordinates = latitude;//Y or -121.0
@@ -52,6 +53,7 @@ public class FindLocation {
 	            	//tempY = Double.parseDouble(latitude);
 	            	tempY = Double.parseDouble(mod_lat);
 	               	coordinates = ""+tempY;
+
 	            	//System.out.println( "latitue is "+latitude);
 	        	}
 	        	else{
@@ -76,7 +78,7 @@ public class FindLocation {
 	 * @param destination longitude and latitude of destination
 	 * @throws IOException
 	 */
-	public void findDistanceTime(String origin, String destination) throws IOException{
+	public int findDistanceTime(String origin, String destination) throws IOException{
     	String webURL = "https://maps.googleapis.com/maps/api/distancematrix/json?";
     	String originRaw = "origin=" + origin;
     	String destRaw = "&destination=" + destination;
@@ -105,6 +107,7 @@ public class FindLocation {
         	}
         	
         }
+        return time;
 	}
 	
 	/**
