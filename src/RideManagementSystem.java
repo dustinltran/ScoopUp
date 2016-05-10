@@ -64,25 +64,35 @@ public class RideManagementSystem {
 		ArrayList<String> tempLocations = new ArrayList<String>();
 		int currDriver = -1;
 		int currTime = 99999999;
+		int tempTime = 0;
+		boolean timeSet = false;
+		
+
 		for(int i = 0; i < 5; i++){
 			timeSchedule[i] = setDaySchedule(timeSchedule[i], i);
 		}
 		
 		for(int a = 0; a < drivers.size(); a++){
 			tempLocations.add(drivers.get(a).getCoordinates());
+			RideSchedule tempRider = new RideSchedule(drivers.get(a));
+			RideSchedules.add(tempRider);
 		}
 		
 		for(int i = 0; i < 5; i++){
 			for(int j = 0; j < passengers.size(); j++){
 				for(int k = 0; (k < drivers.size()) && (drivers.get(k).getNumSeats() > 0); k++){
-					if( (fl.findDistanceTime(drivers.get(k).getAddress(), passengers.get(j).getAddress())/60   ) < 10 &&
-								Integer.parseInt(timeSchedule[i][k][j]) > currTime){
+					if(timeSchedule[i][j][k] != "" && Integer.parseInt(timeSchedule[i][k][j]) < currTime){
 						currDriver = k;
+						tempTime = Integer.parseInt(timeSchedule[i][j][k]);
+						timeSet = true;
 					}
 				}
-				
-				RideSchedule tempRider = new RideSchedule(drivers.get(currDriver));
-				tempRider.addPassengers(passengers.get(j));
+				if(timeSet == true){
+					tempLocations.set(currDriver, passengers.get(j).getAddress());
+					RideSchedules.get(currDriver).addPassengers(passengers.get(j));
+					timeSet = false;
+				}
+				currTime = 99999999;
 				currDriver = -1;
 			}
 					
@@ -157,9 +167,13 @@ public class RideManagementSystem {
 		for(int i = 0; i < drivers.size(); i++){
 			for(int j = 0; j < passengers.size(); j++){
 				try {
-					if(drivers.get(i).getArrivalTimes(day) != null && passengers.get(i).getArrivalTimes(day) != null);
+					if(drivers.get(i).getArrivalTimes(day) != null && passengers.get(j).getArrivalTimes(day) != null){
 						fl.findDistanceTime(drivers.get(i).getCoordinates(), passengers.get(j).getCoordinates());
 						driverSchedule[i][j] = Integer.toString(fl.getTime());
+					}
+					else if (drivers.get(i).getArrivalTimes(day) == null || passengers.get(j).getArrivalTimes(day) == null){
+						driverSchedule[i][j] = "";
+					}
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

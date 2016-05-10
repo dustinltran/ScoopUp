@@ -313,6 +313,10 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 		this.vehicle = vehicle;
 		this.vehicle.addPassenger();
 	}
+	
+	public void addPassenger(){
+		this.vehicle.addPassenger();
+	}
 	/**
 	 * Add Vehicle into vehicle
 	 * @param vehicle
