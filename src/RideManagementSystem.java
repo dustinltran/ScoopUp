@@ -89,7 +89,7 @@ public class RideManagementSystem {
 				}
 				if(timeSet == true){
 					tempLocations.set(currDriver, passengers.get(j).getAddress());
-					RideSchedules.get(currDriver).addPassengers(passengers.get(j));
+					RideSchedules.get(currDriver).addPassengers(passengers.get(j), i);
 					timeSet = false;
 				}
 				currTime = 99999999;
