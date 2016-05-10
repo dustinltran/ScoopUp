@@ -140,6 +140,11 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 		FindLocation fl = new FindLocation();
 		System.out.println(address + "+" + city + "+" + State);
 		homeCoordinates = fl.findCoordinates(address + "+" + city + "+" + State);
+		//System.out.println("homecoordinates: " + homeCoordinates);
+	}
+	
+	private String getHome(){
+		return this.homeCoordinates;
 	}
 	
 	/**

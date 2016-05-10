@@ -44,20 +44,30 @@ public class FindLocation {
 	        if(inputLine.contains("lat") || inputLine.contains("lng")){
 	        	if(inputLine.contains("lat")){
 	            	String latitude = inputLine.substring(23);
-	            	coordinates = latitude;//Y or -121.0
-	            	tempY = Double.parseDouble(latitude);
+	            	String mod_lat = latitude.replace(": ", "");
+	            	mod_lat = mod_lat.replace(",","");
+	            	//coordinates = latitude;//Y or -121.0
+	            	//System.out.println(mod_lat);
+	            	coordinates = mod_lat;
+	            	//tempY = Double.parseDouble(latitude);
+	            	tempY = Double.parseDouble(mod_lat);
+	               	coordinates = ""+tempY;
 	            	//System.out.println( "latitue is "+latitude);
 	        	}
 	        	else{
 	            	String longitude = inputLine.substring(23);
+	            	//System.out.println("longitude value: =>" + longitude);
 	            	tempX = Double.parseDouble(longitude);
-	            	coordinates.concat(longitude);
+	            	
+	            	coordinates+= " : " + tempX;
+	            	
 	            
 	        	}
 	        	count++;
 	        }
 	    }
 	    in.close();
+	    System.out.println(coordinates);
 	    return coordinates;
 	}
 	/**
