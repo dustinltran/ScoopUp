@@ -77,12 +77,7 @@ public class Vehicle implements java.io.Serializable{
 	public void setColor(String color) {
 		this.color = color;
 	}
-	/**
-	 * @return the availableSeats
-	 */
-	public String getAvailableSeats() {
-		return availableSeats;
-	}
+	
 	/**
 	 * @param availableSeats the availableSeats to set
 	 */
@@ -91,6 +86,12 @@ public class Vehicle implements java.io.Serializable{
 		this.seatsLeft = Integer.parseInt(availableSeats);
 	}
 	
+	/**
+	 * @return the availableSeats
+	 */
+	public String getAvailableSeats() {
+		return availableSeats;
+	}
 	
 	public void addPassenger(){
 		if(seatsLeft > 0){
