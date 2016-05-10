@@ -149,9 +149,11 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	 * Add vehicle to array of vehicles
 	 * @param newVehicle vehicle to be added
 	 */
-//	public void setVehicles(Vehicle newVehicle){
-//		vehicles.add(newVehicle);
-//	}
+	public String vehicleID(){
+		return vehicle.getYear() + " "
+				+ vehicle.getMake() + " "
+				+ vehicle.getModel();
+	}
 	
 	/*****************************
 	 *****************************
