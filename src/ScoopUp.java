@@ -404,6 +404,7 @@ public class ScoopUp{
 		System.out.println("*  Address: " + currentUser.getAddress());
 		System.out.println("*");
 		System.out.println("** "+currentUser.getName()+"'s vehicle information");
+		try{
 		System.out.println("*  Vehicle: " + currentUser.vehicleID());
 		System.out.println("*  Seats Available: " + currentUser.vehicle.getAvailableSeats());
 		System.out.println("*");
@@ -420,6 +421,11 @@ public class ScoopUp{
 				System.out.println("*\t" + daysOfWeek[i] + ": " + currentUser.getDepartureTimes(i));
 			}
 		}	
+		
+		}catch(Exception e){
+			
+		}
+		
 		System.out.println("*");
 		System.out.println("**  OPTIONS");
 		System.out.println("*  Press 0 to go back to MAIN MENU");
