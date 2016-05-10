@@ -14,7 +14,6 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	private String name;
 	private String email;
 	private String password;
-	//List drivers 
 	
 	private String address;
 	private String city;
@@ -22,16 +21,12 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	private String zipCode; //Useless
 	private String homeCoordinates;
 	
-	private double X;
-	private double Y;
-	
 	private int distanceToSchool;
 	private int timeToSchool;
 	
 	private boolean hasVehicle;
 	private boolean preference;
 	private ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
-	
 	private Vehicle vehicle;
 
 
@@ -50,7 +45,6 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	 * Constructor
 	 */
 	public Member(){
-		
 		memberLongSchedule = new MemberLongTermSchedule();
 		memberShortSchedule = new MemberShortTermSchedule();
 		
@@ -89,23 +83,6 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 		this.password = password;
 	}
 	
-	
-	public double getX() {
-		return X;
-	}
-
-	public void setX(double x) {
-		X = x;
-	}
-
-	public double getY() {
-		return Y;
-	}
-
-	public void setY(double y) {
-		Y = y;
-	}
-
 	/**
 	 * @param address the address to set
 	 */
@@ -113,15 +90,9 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 		StringTokenizer st = new StringTokenizer(address, ",");
 
 			this.address = st.nextElement().toString();
-			this.address = this.address.replace(" ", "+");
-			
 			this.city = st.nextElement().toString().substring(1);
-			this.city = this.city.replace(" ", "+");
-			
 			this.State = st.nextElement().toString().substring(1);
-			this.State = this.State.replace(" ", "+");
 			this.zipCode = st.nextElement().toString().substring(1);
-			this.zipCode = this.zipCode.replace(" ", "+");
 			
 			try {
 				setHome();
@@ -138,7 +109,7 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	 */
 	private void setHome() throws IOException{
 		FindLocation fl = new FindLocation();
-		System.out.println(address + "+" + city + "+" + State);
+		
 		homeCoordinates = fl.findCoordinates(address + "+" + city + "+" + State);
 		//System.out.println("homecoordinates: " + homeCoordinates);
 	}
@@ -317,6 +288,7 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	/**
 	 * @return the vehicles
 	 */
+	//Should this return the vehicle as a String???????
 	public ArrayList<Vehicle> getVehicles() {
 		return vehicles;
 	}

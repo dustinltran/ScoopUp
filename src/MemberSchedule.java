@@ -1,5 +1,8 @@
 
+<<<<<<< HEAD
 import java.util.HashMap;
+=======
+>>>>>>> origin/master
 
 public abstract class MemberSchedule implements java.io.Serializable {
 	

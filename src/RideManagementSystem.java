@@ -33,12 +33,14 @@ public class RideManagementSystem {
 	
 	//////////////////////// meaningless stuff below ///////////////////////////////////////
 	
+	ParkingGarage parking;
+	
 	/**
 	 * Constructor
 	 */
 	public RideManagementSystem(){
 		RideSchedules = new ArrayList<RideSchedule>();
-
+		parking = new ParkingGarage(20, 0);
 	}
 	
 	/**
@@ -163,5 +165,10 @@ public class RideManagementSystem {
 			return time;
 		}
 	}
+	
+	/**
+	 * Parking assignment
+	 */
+	
 	
 }
