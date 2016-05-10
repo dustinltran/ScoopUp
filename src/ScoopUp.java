@@ -7,7 +7,9 @@ import java.security.MessageDigest;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+
 public class ScoopUp{
+	private String [] daysOfWeek = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
 		
 	private static int option;
 	private String answer;
@@ -400,6 +402,10 @@ public class ScoopUp{
 		System.out.println("TO SCHOOL:");
 		
 	
+		for(int i = 0; i < 5; i++){
+			if(currentUser.getArrivalTimes(i) != null)
+				System.out.println("\t" + daysOfWeek[i] + ": " + currentUser.getArrivalTimes(i));
+		}
 		//TO DO: iterate over arrivals hashmap
 //		for(int key : currentUser.memberLongSchedule.keySet()) {
 //			int day = getKey();
