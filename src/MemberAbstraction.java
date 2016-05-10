@@ -2,6 +2,8 @@
 
 public abstract class MemberAbstraction {
 	
+	private Payment payment;
+	
 	/**
 	 * Abstract methods for MemberStatus (State Pattern)
 	 */
@@ -14,6 +16,7 @@ public abstract class MemberAbstraction {
 	/**
 	 * Abstract methods for MemberSchedule
 	 */
+	
 	public abstract void addArrivals(int day, int time);
 	public abstract void addDepartures(int day, int time);
 }
