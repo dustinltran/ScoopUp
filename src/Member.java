@@ -86,12 +86,13 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	 * @param address the address to set
 	 */
 	public void setAddress(String address) {
+		rawAddress = address;
 		StringTokenizer st = new StringTokenizer(address, ",");
 
-			this.address = st.nextElement().toString();
-			this.city = st.nextElement().toString().substring(1);
-			this.State = st.nextElement().toString().substring(1);
-			this.zipCode = st.nextElement().toString().substring(1);
+		this.address = st.nextElement().toString();
+		this.city = st.nextElement().toString().substring(1);
+		this.State = st.nextElement().toString().substring(1);
+		this.zipCode = st.nextElement().toString().substring(1);
 			
 			try {
 				setHome();
