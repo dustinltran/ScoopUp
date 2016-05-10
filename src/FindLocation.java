@@ -45,7 +45,7 @@ public class FindLocation {
 	        	if(inputLine.contains("lat")){
 	            	String latitude = inputLine.substring(23);
 	            	coordinates = latitude;//Y or -121.0
-	            	tempY = Double.parseDouble(latitude);
+	            	tempY = Double.parseDouble(latitude.substring(0, latitude.length() - 1));
 	            	//System.out.println( "latitue is "+latitude);
 	        	}
 	        	else{

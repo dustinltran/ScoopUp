@@ -395,19 +395,18 @@ public class ScoopUp{
 //	 * @return
 //	 */
 	private int viewProfileScreen(){
-		System.out.println("*****************PROFILE*********************\n\n");
+		System.out.println("*****************PROFILE*********************");
 		System.out.println("*                                           *");
 		System.out.println("*"+currentUser.getName()+"'s contact information*");
 //		System.out.println("Status: " + currentUser.getStatus());
 //		System.out.println("Preference (On Duty): " + m.isPreference());
 		System.out.println("Emial: " + currentUser.getEmail());
 		System.out.println("Address: " + currentUser.getAddress());
-		
+		System.out.println("*                                           *");
 		System.out.println("*"+currentUser.getName()+"'s vehicle information*");
-		System.out.println("Vehicle: " + currentUser.isHasVehicle());
-		System.out.println("Vehicle: " + currentUser.getVehicles());
+		System.out.println("Vehicle: " + currentUser.vehicleID());
 		System.out.println("Seats Available: " + vehicle.getAvailableSeats());
-		
+		System.out.println("*                                           *");
 		System.out.println("*"+currentUser.getName()+"'s schedule*");
 		System.out.println("TO SCHOOL:");
 		
