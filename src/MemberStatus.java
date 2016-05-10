@@ -1,7 +1,5 @@
 
 public abstract class MemberStatus {
-	public abstract String departedState();
-	public abstract String enRouteState();
-	public abstract String arrivedState();
-	
+	public abstract String changeStatus();
+	public abstract String displayStatus();
 }
