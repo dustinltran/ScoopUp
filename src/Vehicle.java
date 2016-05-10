@@ -88,6 +88,7 @@ public class Vehicle implements java.io.Serializable{
 	 */
 	public void setAvailableSeats(String availableSeats) {
 		this.availableSeats = availableSeats;
+		this.seatsLeft = Integer.parseInt(availableSeats);
 	}
 	
 	
