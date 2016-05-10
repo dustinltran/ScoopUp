@@ -154,10 +154,15 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	 * @param newVehicle vehicle to be added
 	 */
 	public String vehicleID(){
+		try{
 		return vehicle.getYear() + " "
 				+ vehicle.getMake() + " "
 				+ vehicle.getModel() + " "
 				+ vehicle.getColor();
+		}catch (Exception e){
+			e.printStackTrace();;
+		}
+		return null;
 	}
 	
 	/*****************************
