@@ -164,6 +164,10 @@ public class RideManagementSystem {
 		public int getTime(){
 			return time;
 		}
+		
+		public void getNotificationFromTrackingState(){
+			
+		}
 	}
 	
 	/**

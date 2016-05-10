@@ -28,6 +28,8 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	private boolean preference;
 	private ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
 	private Vehicle vehicle;
+	
+	private ArrayList<Notification> notifications= new ArrayList<Notification>();
 
 
 	
@@ -346,6 +348,12 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 		// TODO Auto-generated method stub
 		
 		return 0;
+	}
+
+	@Override
+	public void updateRideStateStatus(String trackRideState) {
+		// TODO Auto-generated method stub
+		System.out.println("Member Ride State --> " + trackRideState);
 	}
 	
 	
