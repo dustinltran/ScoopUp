@@ -312,6 +312,7 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 			setVehicles(vehicle);
 		}
 	}
+	
 	/**
 	 * @return the preference
 	 */

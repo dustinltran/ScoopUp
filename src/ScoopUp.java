@@ -206,7 +206,9 @@ public class ScoopUp{
 				temp.memberLongSchedule.addDepartures(0, tempTime);
 				
 			} else if (answer.equals("n")) {
-				System.out.println("");
+//				System.out.println("");
+				temp.memberLongSchedule.addArrivals(0, null);
+				temp.memberLongSchedule.addDepartures(0, null);
 			}else{
 				System.out.println("Invalid Input, Try again!");
 				answer = in.nextLine();
@@ -227,7 +229,8 @@ public class ScoopUp{
 				tempTime = in.nextLine();
 				temp.memberLongSchedule.addDepartures(1, tempTime);
 			} else if (answer.equals("n")) {
-				System.out.println("");
+				temp.memberLongSchedule.addArrivals(1, null);
+				temp.memberLongSchedule.addDepartures(1, null);
 			}else{
 				System.out.println("Invalid Input, Try again!");
 				answer = in.nextLine();
@@ -248,7 +251,8 @@ public class ScoopUp{
 				tempTime = in.nextLine();
 				temp.memberLongSchedule.addDepartures(2, tempTime);
 			} else if (answer.equals("n")) {
-				System.out.println("");
+				temp.memberLongSchedule.addArrivals(2, null);
+				temp.memberLongSchedule.addDepartures(2, null);
 			}else{
 				System.out.println("Invalid Input, Try again!");
 				answer = in.nextLine();
@@ -271,7 +275,8 @@ public class ScoopUp{
 				tempTime = in.nextLine();
 				temp.memberLongSchedule.addDepartures(3, tempTime);
 			} else if (answer.equals("n")) {
-				System.out.println("");
+				temp.memberLongSchedule.addArrivals(3, null);
+				temp.memberLongSchedule.addDepartures(3, null);
 			}else{
 				System.out.println("Invalid Input, Try again!");
 				answer = in.nextLine();
@@ -294,7 +299,8 @@ public class ScoopUp{
 				tempTime = in.nextLine();
 				temp.memberLongSchedule.addDepartures(4, tempTime);
 			} else if (answer.equals("n")) {
-				System.out.println("");
+				temp.memberLongSchedule.addArrivals(4, null);
+				temp.memberLongSchedule.addDepartures(4, null);
 			}else{
 				System.out.println("Invalid Input, Try again!");
 				answer = in.nextLine();
@@ -486,7 +492,8 @@ public class ScoopUp{
 				currentUser.memberLongSchedule.addDepartures(0, tempTime);
 				
 			} else if (answer.equals("n")) {
-				System.out.println("");
+				currentUser.memberLongSchedule.addArrivals(0, null);
+				currentUser.memberLongSchedule.addDepartures(0, null);
 			}else{
 				System.out.println("Invalid Input, Try again!");
 				answer = in.nextLine();
@@ -507,7 +514,8 @@ public class ScoopUp{
 				tempTime = in.nextLine();
 				currentUser.memberLongSchedule.addDepartures(1, tempTime);
 			} else if (answer.equals("n")) {
-				System.out.println("");
+				currentUser.memberLongSchedule.addArrivals(1, null);
+				currentUser.memberLongSchedule.addDepartures(1, null);
 			}else{
 				System.out.println("Invalid Input, Try again!");
 				answer = in.nextLine();
@@ -528,7 +536,8 @@ public class ScoopUp{
 				tempTime = in.nextLine();
 				currentUser.memberLongSchedule.addDepartures(2, tempTime);
 			} else if (answer.equals("n")) {
-				System.out.println("");
+				currentUser.memberLongSchedule.addArrivals(2, null);
+				currentUser.memberLongSchedule.addDepartures(2, null);
 			}else{
 				System.out.println("Invalid Input, Try again!");
 				answer = in.nextLine();
@@ -551,7 +560,8 @@ public class ScoopUp{
 				tempTime = in.nextLine();
 				currentUser.memberLongSchedule.addDepartures(3, tempTime);
 			} else if (answer.equals("n")) {
-				System.out.println("");
+				currentUser.memberLongSchedule.addArrivals(3, null);
+				currentUser.memberLongSchedule.addDepartures(3, null);
 			}else{
 				System.out.println("Invalid Input, Try again!");
 				answer = in.nextLine();
@@ -574,7 +584,8 @@ public class ScoopUp{
 				tempTime = in.nextLine();
 				currentUser.memberLongSchedule.addDepartures(4, tempTime);
 			} else if (answer.equals("n")) {
-				System.out.println("");
+				currentUser.memberLongSchedule.addArrivals(4, null);
+				currentUser.memberLongSchedule.addDepartures(4, null);
 			}else{
 				System.out.println("Invalid Input, Try again!");
 				answer = in.nextLine();
@@ -598,20 +609,21 @@ public class ScoopUp{
 			
 			if (answer.charAt(0) == 'y'){
 				
-				Vehicle newVehicle = new Vehicle();
+				Vehicle vehicle = new Vehicle();
 				
 				currentUser.setHasVehicle(true);
 				System.out.println("Enter vehicle's year: ");
-				newVehicle.setYear(in.nextLine());
+				vehicle.setYear(in.nextLine());
 				System.out.println("Enter vehicle's make: ");
-				newVehicle.setMake(in.nextLine());
+				vehicle.setMake(in.nextLine());
 				System.out.println("Enter vehicle's model: ");
-				newVehicle.setModel(in.nextLine());
+				vehicle.setModel(in.nextLine());
 				System.out.println("Enter vehicle's color: ");
-				newVehicle.setColor(in.nextLine());
+				vehicle.setColor(in.nextLine());
 				System.out.println("Enter number of seats: ");
-				newVehicle.setAvailableSeats(in.nextLine());
-				currentUser.setVehicles(newVehicle);
+				vehicle.setAvailableSeats(in.nextLine());
+				currentUser.addVehicle(vehicle);
+				currentUser.setVehicles(vehicle);
 			} else if (answer.charAt(0) == 'n') {
 				currentUser.setHasVehicle(false);
 			} 
