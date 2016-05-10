@@ -30,6 +30,16 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 	private ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
 	private Vehicle vehicle;
 	
+	public Vehicle getVehicle() {
+		return vehicle;
+	}
+
+
+	public void setVehicle(Vehicle vehicle) {
+		this.vehicle = vehicle;
+	}
+
+
 	private Boolean status; //set status of Member false if passenger true if driver
 	
 	float points;
@@ -51,6 +61,7 @@ public class Member extends MemberAbstraction implements Comparable<Member>, jav
 		points = 0;
 		rides = 0;
 	}
+	
 	
 	/*****************************
 	 *****************************

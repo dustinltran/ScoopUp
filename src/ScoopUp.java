@@ -180,7 +180,8 @@ public class ScoopUp{
 				vehicle.setColor(in.nextLine());
 				System.out.println("Enter number of seats: ");
 				vehicle.setAvailableSeats(in.nextLine());
-				temp.setVehicles(vehicle);
+				//temp.setVehicles(vehicle);
+				
 			} else if (answer.charAt(0) == 'n') {
 				temp.setHasVehicle(false);
 			} 

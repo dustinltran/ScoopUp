@@ -56,30 +56,40 @@ public class RideManagementSystem {
 	}
 	/**
 	 * Set Schedule
+	 * @throws NumberFormatException 
 	 * @throws IOException 
 	 */
-//	public void setSchedule(){
-//		int currDriver = -1;
-//		int currTime = 99999999;
-//		for(int i = 0; i < 5; i++){
-//			timeSchedule[i] = setDaySchedule(timeSchedule[i], i);
-//		}
-//		
-//		for(int i = 0; i < 5; i++){
-//			for(int j = 0; j < passengers.size(); j++){
-//				for(int k = 0; (k < drivers.size()) && (drivers.get(k).getNumSeats() > 0); k++){
-//					if(Integer.parseInt(timeSchedule[i][k][j]) > currTime){
-//						currDriver = k;
-//					}
-//				}
-//				RideSchedule tempRider = new RideSchedule(drivers.get(currDriver));
-//				tempRider.addPassengers(passengers.get(j));
-//				currDriver = -1;
-//			}
-//					
-//		}
-//		
-//	}
+	public void setSchedule() throws NumberFormatException, IOException{
+		Integer members[] = new Integer[drivers.size()];
+		ArrayList<String> tempLocations = new ArrayList<String>();
+		int currDriver = -1;
+		int currTime = 99999999;
+		for(int i = 0; i < 5; i++){
+			timeSchedule[i] = setDaySchedule(timeSchedule[i], i);
+		}
+		
+		for(int a = 0; a < drivers.size(); a++){
+			tempLocations.add(drivers.get(a).getCoordinates());
+		}
+		
+		for(int i = 0; i < 5; i++){
+			for(int j = 0; j < passengers.size(); j++){
+				for(int k = 0; (k < drivers.size()) && (drivers.get(k).getNumSeats() > 0); k++){
+					if( (fl.findDistanceTime(drivers.get(k).getAddress(), passengers.get(j).getAddress())/60   ) < 10 &&
+								Integer.parseInt(timeSchedule[i][k][j]) > currTime){
+						currDriver = k;
+					}
+				}
+				
+				RideSchedule tempRider = new RideSchedule(drivers.get(currDriver));
+				tempRider.addPassengers(passengers.get(j));
+				currDriver = -1;
+			}
+					
+		}
+		
+	}
+	
 	
 	
 	public void setSchedule(Member member) throws IOException{
@@ -101,7 +111,7 @@ public class RideManagementSystem {
 					// also check for location on map later
 					if( (fl.findDistanceTime(member.getAddress(), drivers.get(i).getAddress())/60   ) < 10 ){ 
 						// match found here. set up passenger and driver if driver has enough seats. 
-						fridayHelper(drivers.get(i), member);
+						
 					}
 				}
 			}
@@ -109,11 +119,11 @@ public class RideManagementSystem {
 		}
 	}
 	
-	public void fridayHelper(Member driver, Member pass){
-		if (driver.getNumSeats()> 0 ){
-			//driver.getVehic
-		}
-	}
+//	public void fridayHelper(Member driver, Member pass){
+//		if (driver.getNumSeats()  > 0 ){
+//			driver.getVehicle().
+//		}
+//	}
 
 	private void setThursdaySchedule(Member member) {
 		// TODO Auto-generated method stub
