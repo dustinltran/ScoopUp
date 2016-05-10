@@ -21,25 +21,19 @@ public class ScoopUp{
 	private Member currentUser;
 	
 	Scanner in = new Scanner(System.in);
-	
 	Vehicle vehicle = new Vehicle();
 	
 	public static void main(String[] args){
-
 		
 		ScoopUp system = new ScoopUp();
 		system.MemberList = new ArrayList<Member>();
 		
-		
 		while(true){
 			system.loadInfo();
-			
 			system.systemStart(); 	// Login/SignUp
 			system.systemMain();	// Main menu
-			
 			system.saveInfo();
 		}
-		
 	}
 	
 	/**
@@ -55,8 +49,7 @@ public class ScoopUp{
 				signUpScreen();
 				valid = true;
 			} 
-		}while(valid == false);
-		
+		} while(valid == false);
 	}
 
 	/**
@@ -82,10 +75,10 @@ public class ScoopUp{
 	 * @return true if valid input or false if invalid
 	 */
 	private boolean validInput(int option){
-		if(option == 1 || option == 2){
+		if (option == 1 || option == 2){
 			return true;
 		}
-		else{
+		else {
 			System.out.println("Invalid Input\n");
 			return false;
 		}
@@ -193,7 +186,6 @@ public class ScoopUp{
 		
 		System.out.println("You are almost done. \nLastly we need to setup your schedule for the rest of the semester.");
 
-		
 		/*
 		 * MONDAY -- Pass info to memberLongTermSchedule
 		 */
@@ -217,8 +209,6 @@ public class ScoopUp{
 			}
 		}while(answer.charAt(0) != 'y' && answer.charAt(0) != 'n');
 		
-		
-		
 		/*
 		 * TUESDAY -- info to memberLongTermSchedule
 		 */
@@ -238,7 +228,6 @@ public class ScoopUp{
 				System.out.println("Invalid Input, Try again!");
 			}
 		}while(answer.charAt(0) != 'y' && answer.charAt(0) != 'n');
-		
 
 		/*
 		 * WEDNESDAY -- Pass info to memberLongTermSchedule
@@ -301,6 +290,7 @@ public class ScoopUp{
 				System.out.println("");
 			}else{
 				System.out.println("Invalid Input, Try again!");
+				answer = in.nextLine();
 			}
 		}while(answer.charAt(0) != 'y' && answer.charAt(0) != 'n');
 		
@@ -316,7 +306,6 @@ public class ScoopUp{
 		
 	}
 
-	
 	/**
 	 * MAIN SYSTEM
 	 */
@@ -422,12 +411,12 @@ public class ScoopUp{
 		// TO DO: Iterate over departures hashmap
 		
 		System.out.println("OPTIONS");
-		System.out.println("Press 1 to change status");
-		System.out.println("Press 2 to change preference");
-		System.out.println("Press 3 to edit seats available");
-//		System.out.println("Press 4 to edit schedule");
-		System.out.println("Press 5 to go back to MAIN MENU");
+		System.out.println("Press 0 to go back to MAIN MENU");
 		option = in.nextInt();
+		while (option != 0){
+			System.out.println("Invalid option. Try again.");
+			option = in.nextInt();
+		}
 		return option;
 	}
 
