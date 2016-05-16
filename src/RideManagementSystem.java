@@ -83,19 +83,26 @@ public class RideManagementSystem {
 				for(int k = 0; (k < drivers.size()) && (drivers.get(k).getNumSeats() > 0); k++){
 					if(timeSchedule[i][j][k] != "" && Integer.parseInt(timeSchedule[i][k][j]) < currTime){
 						currDriver = k;
-						tempTime = Integer.parseInt(timeSchedule[i][j][k]);
+						currTime = Integer.parseInt(timeSchedule[i][j][k]);
 						timeSet = true;
 					}
 				}
 				if(timeSet == true){
 					tempLocations.set(currDriver, passengers.get(j).getAddress());
 					RideSchedules.get(currDriver).addPassengers(passengers.get(j), i);
-					timeSet = false;
+
 				}
 				currTime = 99999999;
 				currDriver = -1;
+				timeSet = false;
 			}
 					
+		}
+		
+		for(RideSchedule r: RideSchedules){
+			for(int a = 0; a < 5; a++){
+				r.createSchedule(true, a);
+			}
 		}
 		
 	}
