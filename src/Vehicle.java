@@ -77,19 +77,25 @@ public class Vehicle implements java.io.Serializable{
 	public void setColor(String color) {
 		this.color = color;
 	}
-	/**
-	 * @return the availableSeats
-	 */
-	public String getAvailableSeats() {
-		return availableSeats;
-	}
+	
 	/**
 	 * @param availableSeats the availableSeats to set
 	 */
 	public void setAvailableSeats(String availableSeats) {
+		//System.out.println("stting seeats");
 		this.availableSeats = availableSeats;
+		
+		this.seatsLeft = Integer.parseInt(availableSeats);
+		//System.out.println("available seats are"+ availableSeats);
 	}
 	
+	/**
+	 * @return the availableSeats
+	 */
+	public String getAvailableSeats() {
+		//System.out.println("gettting setas");
+		return availableSeats;
+	}
 	
 	public void addPassenger(){
 		if(seatsLeft > 0){

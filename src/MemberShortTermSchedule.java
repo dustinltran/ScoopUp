@@ -8,13 +8,12 @@ public class MemberShortTermSchedule extends MemberSchedule{
 	private int day;
 	private String time;
 	
-	
 	/**
-	 * @param shortTermSchedule
+	 * @param day
+	 * @param time
 	 */
 	public MemberShortTermSchedule() {
 		super();
-
 		shortTermArrivals = new HashMap<Integer, String>();
 		shortTermDepartures = new HashMap<Integer, String>();
 	}
@@ -22,60 +21,23 @@ public class MemberShortTermSchedule extends MemberSchedule{
 	
 	@Override
 	public void addArrivals(int day, String time) {
-		
 		shortTermArrivals.put(day, time);
 		
 	}
 
 	@Override
 	public void addDepartures(int day, String time) {
-		
 		shortTermDepartures.put(day, time);
-		
+
 	}
-
-	/**
-	 * @return the shortTermDepartures
-	 */
-	public HashMap<Integer, String> getShortTermDepartures() {
-		return shortTermDepartures;
-	}
-
-	/**
-	 * @param shortTermDepartures the shortTermDepartures to set
-	 */
-	public void setShortTermDepartures(HashMap<Integer, String> shortTermDepartures) {
-		this.shortTermDepartures = shortTermDepartures;
-	}
-
-
-	/**
-	 * @return the shortTermArrivals
-	 */
-	public HashMap<Integer, String> getShortTermArrivals() {
-		return shortTermArrivals;
-	}
-
-
-	/**
-	 * @param shortTermArrivals the shortTermArrivals to set
-	 */
-	public void setShortTermArrivals(HashMap<Integer, String> shortTermArrivals) {
-		this.shortTermArrivals = shortTermArrivals;
-	}
-
-
-	@Override
-	public String getArrivals(Integer day) {
-		// TODO Auto-generated method stub
+	
+	public String getArrivals(Integer day){
 		return shortTermArrivals.get(day);
 	}
-
-
-	@Override
-	public String getDepartures(Integer day) {
-		// TODO Auto-generated method stub
-		return shortTermArrivals.get(day);
+	
+	public String getDepartures(Integer day){
+		return shortTermDepartures.get(day);
 	}
 
 }
+
