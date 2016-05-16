@@ -10,10 +10,7 @@ public class RideSchedule {
 	private String rawLeaveTime;
 	
 	private ArrayList<ArrayList<Member>> passengers;
-	//private Member[]<ArrayList<Member>> passengers = new Member[5]<ArrayList<Member>>();
-	
-	//private Member[][] = new Member[5][]
-//	private 
+
 	
 	/**
 	 * Constructor
