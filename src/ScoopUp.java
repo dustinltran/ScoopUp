@@ -343,7 +343,7 @@ public class ScoopUp{
 					break;
 				case 3: togglePassenger();
 					break;
-				case 4: 
+				case 4: requestRide();
 					break;
 				case 5: 
 					break;
@@ -374,6 +374,31 @@ public class ScoopUp{
 	private void toggleDriver(){
 		currentUser.setDriver();
 		currentUser.getStatus();
+	}
+	
+	private void requestRide(){
+		long randomNum = 1000 + (int)(Math.random() * 5000); 
+		int randomNum2 = 0 + (int)(Math.random()*10);
+		
+		System.out.println("What time do you want to be picked up today");
+
+		
+		try {
+			Long input = in.nextLong();
+
+			System.out.println("Locating Driver");
+			if(randomNum2 == 0){
+				System.out.println("unable to find driver");
+			}else{
+				System.out.println("Found a driver");
+				System.out.println("Will be picked up at " + input);
+				System.out.println();
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+
 	}
 	/**
 	 * MAIN MENU SCREEN
